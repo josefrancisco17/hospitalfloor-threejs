@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-const wallHeight = 3;
+const wallHeight = 5;
 
 const scene = new THREE.Scene();
 
@@ -26,10 +26,42 @@ function createWall(width, height, depth, x, y, z) {
     scene.add(wall);
 }
 
+//Exterior Walls
 createWall(50, wallHeight, 0.2, 0, wallHeight / 2, -25);
 createWall(50, wallHeight, 0.2, 0, wallHeight / 2, 25);
 createWall(0.2, wallHeight, 50, -25, wallHeight / 2, 0);
 createWall(0.2, wallHeight, 50, 25, wallHeight / 2, 0);
+
+//Interior Walls SR1
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 22.5)
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 15)
+createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 12.5);
+
+//Interior Walls SR2
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 10)
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 2.5)
+createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
+
+//Interior Walls SR3
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -10)
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -2.5)
+createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
+
+//Interior Walls SR4
+createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -10)
+createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -2.5)
+createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
+
+//Interior Walls SR5
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -22.5)
+createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -15)
+createWall(20, wallHeight, 0.2, -15, wallHeight / 2, -12.5);
+
+//Interior Walls SR6
+createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -22.5)
+createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -15)
+createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
+
 
 createFloor(50,50)
 
