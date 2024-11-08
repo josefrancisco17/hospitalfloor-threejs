@@ -48,8 +48,8 @@ createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -2.5)
 createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
 
 //Interior Walls SR4
-createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -10)
-createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -2.5)
+createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -10)
+createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -2.5)
 createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
 
 //Interior Walls SR5
@@ -58,10 +58,14 @@ createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -15)
 createWall(20, wallHeight, 0.2, -15, wallHeight / 2, -12.5);
 
 //Interior Walls SR6
-createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -22.5)
-createWall(0.2, wallHeight, -5, 5, wallHeight / 2, -15)
+createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -22.5)
+createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -15)
 createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
+//Reception
+createWall(0.2, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
+createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
+createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 12.5);
 
 createFloor(50,50)
 
