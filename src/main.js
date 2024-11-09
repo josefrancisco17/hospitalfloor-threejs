@@ -88,11 +88,54 @@ loader.load('models/restRoom/simple_hospital_bed.glb', function(gltf) {
 
 //Surgical Room 1
 
-//Surgical Room 2
 
+//Surgical Room 2
+// Center of the room: position.set(16, 0.35, -6);
+
+const directionalLightS2 = new THREE.DirectionalLight(0xffffff, 1);
+directionalLightS2.position.set(16, 10, -6);
+
+scene.add(directionalLightS2);
+
+loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
+    const cabinet = gltf.scene;
+    cabinet.scale.set(0.35, 0.35, 0.35);
+    cabinet.position.set(17.3, 0.35, -11.52);
+    scene.add(cabinet);
+});
+
+loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
+    const cabinet2 = gltf.scene;
+    cabinet2.scale.set(0.35, 0.25, 0.35); // Reduces the size by half on all axes (x, y, z)
+    cabinet2.position.set(15, 0.35, -11.52);
+    scene.add(cabinet2);
+});
+
+loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
+    const cabinet3 = gltf.scene;
+    cabinet3.scale.set(0.35, 0.25, 0.35); // Reduces the size by half on all axes (x, y, z)
+    cabinet3.position.set(19.6, 0.35, -11.52);
+    scene.add(cabinet3);
+});
 //Surgical Room 3
 
 //Surgical Room 4
+
+//Corridor
+
+loader.load('models/corridor/security_camera.glb', function(gltf) {
+    const camera1 = gltf.scene;
+    camera1.scale.set(-3, 3, 3);
+    camera1.position.set(0, 4.5, 24.5);
+    scene.add(camera1);
+});
+
+loader.load('models/corridor/security_camera.glb', function(gltf) {
+    const camera2 = gltf.scene;
+    camera2.scale.set(-3, 3, -3);
+    camera2.position.set(0, 4.5, -24.5);
+    scene.add(camera2);
+});
 
 //camera
 const camera = new THREE.PerspectiveCamera(
