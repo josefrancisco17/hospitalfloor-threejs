@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const wallHeight = 5;
 
@@ -33,41 +34,54 @@ createWall(0.2, wallHeight, 50, -25, wallHeight / 2, 0);
 createWall(0.2, wallHeight, 50, 25, wallHeight / 2, 0);
 
 //Interior Walls SR1
-createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 22.5)
-createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 15)
-createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 12.5);
-
-//Interior Walls SR2
-createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 10)
-createWall(0.2, wallHeight, 5, -5, wallHeight / 2, 2.5)
-createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
-
-//Interior Walls SR3
 createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -10)
 createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -2.5)
 createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
 
-//Interior Walls SR4
+//Interior Walls SR2
 createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -10)
 createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -2.5)
 createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
 
-//Interior Walls SR5
+//Interior Walls SR3
 createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -22.5)
 createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -15)
 createWall(20, wallHeight, 0.2, -15, wallHeight / 2, -12.5);
 
-//Interior Walls SR6
+//Interior Walls SR4
 createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -22.5)
 createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -15)
 createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
-//Reception
+//Rest Room
+createWall(0.2, wallHeight, 2.5, -5, wallHeight / 2, 23.75)
+createWall(0.2, wallHeight, 17.5, -5, wallHeight / 2, 7.5)
+
+//Reception Room
 createWall(0.2, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
 createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
-createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 12.5);
+
 
 createFloor(50,50)
+
+//Loader Model
+const loader = new GLTFLoader();
+loader.load('models/simple_hospital_bed.glb', function(gltf) {
+    const bed = gltf.scene;
+
+    // Set the scale of the bed to reduce its size
+    bed.scale.set(0.025, 0.025, 0.025); // Reduces the size by half on all axes (x, y, z)
+    bed.position.set(10,1.75,5);
+
+    // Add the scaled bed to the scene
+    scene.add(bed);
+});
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(10, 10, 10);
+scene.add(directionalLight);
+
+
 
 //camera
 const camera = new THREE.PerspectiveCamera(
