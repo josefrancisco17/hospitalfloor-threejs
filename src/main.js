@@ -64,24 +64,35 @@ createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
 
 createFloor(50,50)
 
-//Loader Model
+//Rest Room
+
+
+
+//Reception Room
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(10, 10, 10);
+
+scene.add(directionalLight);
 const loader = new GLTFLoader();
-loader.load('models/simple_hospital_bed.glb', function(gltf) {
+loader.load('models/restRoom/simple_hospital_bed.glb', function(gltf) {
     const bed = gltf.scene;
 
     // Set the scale of the bed to reduce its size
     bed.scale.set(0.025, 0.025, 0.025); // Reduces the size by half on all axes (x, y, z)
-    bed.position.set(10,1.75,5);
+    bed.position.set(-10,1.75,5);
 
     // Add the scaled bed to the scene
     scene.add(bed);
 });
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(10, 10, 10);
-scene.add(directionalLight);
+//Surgical Room 1
 
+//Surgical Room 2
 
+//Surgical Room 3
+
+//Surgical Room 4
 
 //camera
 const camera = new THREE.PerspectiveCamera(
