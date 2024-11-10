@@ -1,8 +1,17 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import Stats from 'three/examples/jsm/libs/stats.module.js';
 
-const wallHeight = 5;
+
+//Performance Measurement
+const stats = new Stats();
+document.body.appendChild(stats.dom);
+stats.showPanel(0);
+stats.dom.style.position = 'absolute';
+stats.dom.style.top = '0px';
+stats.dom.style.right = '0px';
+stats.dom.style.left = 'auto';
 
 const scene = new THREE.Scene();
 
@@ -26,6 +35,8 @@ function createWall(width, height, depth, x, y, z) {
     wall.position.set(x, y, z);
     scene.add(wall);
 }
+
+const wallHeight = 5;
 
 //Exterior Walls
 createWall(50, wallHeight, 0.2, 0, wallHeight / 2, -25);
@@ -208,8 +219,10 @@ window.addEventListener("resize", () => {
 });
 
 const animate = () => {
+    stats.begin();
     controls.update();
     renderer.render(scene, camera);
+    stats.end();
     window.requestAnimationFrame(animate);
 }
 
