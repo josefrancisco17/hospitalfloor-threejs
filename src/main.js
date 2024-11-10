@@ -21,10 +21,25 @@ scene.add( axesHelper );
 
 //create meshes
 function createFloor(width, depth) {
+    const textureLoader = new THREE.TextureLoader();
+    const baseTexture = textureLoader.load('/textures/white-brick-wall-bl/white-brick-wall_albedo.png');
+
+    baseTexture.wrapS = baseTexture.wrapT = THREE.RepeatWrapping;
+    baseTexture.repeat.set(8, 8);
+    baseTexture.anisotropy = 16;
+
+    const floorMaterial = new THREE.MeshStandardMaterial({
+        map: baseTexture,
+        roughness: 0.65,
+        metalness: 0.25,
+        envMapIntensity: 1,
+        side: THREE.DoubleSide
+    });
+
     const floorGeometry = new THREE.PlaneGeometry(width, depth);
-    const floorMaterial = new THREE.MeshBasicMaterial({ color: 0xcccccc, side: THREE.DoubleSide });
     const floor = new THREE.Mesh(floorGeometry, floorMaterial);
     floor.rotation.x = -Math.PI / 2;
+    floor.receiveShadow = true;
     scene.add(floor);
 }
 
@@ -36,7 +51,7 @@ function createWall(width, height, depth, x, y, z) {
     scene.add(wall);
 }
 
-const wallHeight = 5;
+const wallHeight = 7;
 
 //Exterior Walls
 createWall(50, wallHeight, 0.2, 0, wallHeight / 2, -25);
@@ -74,7 +89,6 @@ createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
 
 
 createFloor(50,50)
-
 
 //Reception Room
 const loader = new GLTFLoader();
