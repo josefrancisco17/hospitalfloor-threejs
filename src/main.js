@@ -131,24 +131,40 @@ scene.add(directionalLightS2);
 
 loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
     const cabinet = gltf.scene;
-    cabinet.scale.set(0.35, 0.35, 0.35);
+    cabinet.scale.set(0.35, 0.35, -0.35);
     cabinet.position.set(17.3, 0.35, -11.52);
     scene.add(cabinet);
 });
 
 loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
     const cabinet2 = gltf.scene;
-    cabinet2.scale.set(0.35, 0.25, 0.35); // Reduces the size by half on all axes (x, y, z)
+    cabinet2.scale.set(0.35, 0.25, -0.35);
     cabinet2.position.set(15, 0.35, -11.52);
     scene.add(cabinet2);
 });
 
 loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
     const cabinet3 = gltf.scene;
-    cabinet3.scale.set(0.35, 0.25, 0.35); // Reduces the size by half on all axes (x, y, z)
+    cabinet3.scale.set(0.35, 0.25, -0.35);
     cabinet3.position.set(19.6, 0.35, -11.52);
     scene.add(cabinet3);
 });
+
+loader.load('models/surgicalRoom/operating_bench.glb', function(gltf) {
+    const operating_bench = gltf.scene;
+    operating_bench.scale.set(4.5, 4.5, 4.5);
+    operating_bench.position.set(14, 0.35, -3);
+    operating_bench.rotation.y = THREE.MathUtils.degToRad(15);
+    scene.add(operating_bench);
+});
+/*
+loader.load('models/surgicalRoom/surgical_bed.glb', function(gltf) {
+    const surgical_bed = gltf.scene;
+    surgical_bed.scale.set(2000, 2000, 2000);
+    surgical_bed.position.set(14, 0.35, -3);
+    scene.add(surgical_bed);
+}); */
+
 //Surgical Room 3
 
 //Surgical Room 4
