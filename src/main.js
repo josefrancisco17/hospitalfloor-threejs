@@ -175,6 +175,13 @@ loader.load('models/restRoom/wall.glb', function(gltf) {
     scene.add(bed);
 });
 
+loader.load('models/restRoom/sofa.glb', function(gltf) {
+    const sofa = gltf.scene;
+    sofa.position.set(-24.4,0,12);
+    sofa.scale.set(15,15,15);
+    scene.add(sofa);
+});
+
 //Surgical Room 1
 
 
