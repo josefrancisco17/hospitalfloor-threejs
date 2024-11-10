@@ -54,8 +54,8 @@ createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -15)
 createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
 //Rest Room
-createWall(0.2, wallHeight, 2.5, -5, wallHeight / 2, 23.75)
-createWall(0.2, wallHeight, 17.5, -5, wallHeight / 2, 7.5)
+createWall(0.2, wallHeight, 10, -5, wallHeight / 2, 20)
+createWall(0.2, wallHeight, 10, -5, wallHeight / 2, 5)
 
 //Reception Room
 createWall(0.2, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
@@ -64,13 +64,13 @@ createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
 
 createFloor(50,50)
 
-//Rest Room
 
+//Reception Room
 const loader = new GLTFLoader();
 
 
 const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
-hemisphereLight.position.set(0, 10, 0); // Posiciona a luz acima da scene
+hemisphereLight.position.set(0, 10, 0);
 scene.add(hemisphereLight);
 
 
@@ -96,34 +96,49 @@ loader.load('models/reception/ReceptionDesk3.glb', function(gltf) {
 });
 
 
-
-
-
-
-//Reception Room
-
+//Rest Room
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(10, 10, 10);
 
 scene.add(directionalLight);
 
-loader.load('models/restRoom/simple_hospital_bed.glb', function(gltf) {
+loader.load('models/restRoom/bed.glb', function(gltf) {
     const bed = gltf.scene;
-
-    // Set the scale of the bed to reduce its size
-    bed.scale.set(0.025, 0.025, 0.025); // Reduces the size by half on all axes (x, y, z)
-    bed.position.set(-10,1.75,5);
-
-    // Add the scaled bed to the scene
+    bed.position.set(-10,0,0.5);
+    bed.scale.set(15,15,15);
+    bed.rotation.y = THREE.MathUtils.degToRad(-90);
     scene.add(bed);
 });
+
+loader.load('models/restRoom/bed.glb', function(gltf) {
+    const bed = gltf.scene;
+    bed.position.set(-20,0,0.5);
+    bed.scale.set(15,15,15);
+    bed.rotation.y = THREE.MathUtils.degToRad(-90);
+    scene.add(bed);
+});
+
+loader.load('models/restRoom/bed.glb', function(gltf) {
+    const bed = gltf.scene;
+    bed.position.set(-10,0,24.5);
+    bed.scale.set(15,15,15);
+    bed.rotation.y = THREE.MathUtils.degToRad(-270);
+    scene.add(bed);
+});
+
+loader.load('models/restRoom/bed.glb', function(gltf) {
+    const bed = gltf.scene;
+    bed.position.set(-20,0,24.5);
+    bed.scale.set(15,15,15);
+    bed.rotation.y = THREE.MathUtils.degToRad(-270);
+    scene.add(bed);
+});
+
 
 //Surgical Room 1
 
 
 //Surgical Room 2
-// Center of the room: position.set(16, 0.35, -6);
-
 const directionalLightS2 = new THREE.DirectionalLight(0xffffff, 1);
 directionalLightS2.position.set(16, 10, -6);
 
@@ -131,46 +146,29 @@ scene.add(directionalLightS2);
 
 loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
     const cabinet = gltf.scene;
-    cabinet.scale.set(0.35, 0.35, -0.35);
+    cabinet.scale.set(0.35, 0.35, 0.35);
     cabinet.position.set(17.3, 0.35, -11.52);
     scene.add(cabinet);
 });
 
 loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
     const cabinet2 = gltf.scene;
-    cabinet2.scale.set(0.35, 0.25, -0.35);
+    cabinet2.scale.set(0.35, 0.25, 0.35);
     cabinet2.position.set(15, 0.35, -11.52);
     scene.add(cabinet2);
 });
 
 loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
     const cabinet3 = gltf.scene;
-    cabinet3.scale.set(0.35, 0.25, -0.35);
+    cabinet3.scale.set(0.35, 0.25, 0.35);
     cabinet3.position.set(19.6, 0.35, -11.52);
     scene.add(cabinet3);
 });
-
-loader.load('models/surgicalRoom/operating_bench.glb', function(gltf) {
-    const operating_bench = gltf.scene;
-    operating_bench.scale.set(4.5, 4.5, 4.5);
-    operating_bench.position.set(14, 0.35, -3);
-    operating_bench.rotation.y = THREE.MathUtils.degToRad(15);
-    scene.add(operating_bench);
-});
-/*
-loader.load('models/surgicalRoom/surgical_bed.glb', function(gltf) {
-    const surgical_bed = gltf.scene;
-    surgical_bed.scale.set(2000, 2000, 2000);
-    surgical_bed.position.set(14, 0.35, -3);
-    scene.add(surgical_bed);
-}); */
-
 //Surgical Room 3
 
 //Surgical Room 4
 
 //Corridor
-
 loader.load('models/corridor/security_camera.glb', function(gltf) {
     const camera1 = gltf.scene;
     camera1.scale.set(-3, 3, 3);
@@ -192,7 +190,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     200
 );
-camera.position.set(25, 25, 25);
+camera.position.set(-25, 25, 25);
 
 //controls
 const canvas = document.querySelector("canvas.threejs");
