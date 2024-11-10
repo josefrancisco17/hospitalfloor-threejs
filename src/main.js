@@ -129,7 +129,7 @@ scene.add(directionalLight);
 
 loader.load('models/restRoom/bed.glb', function(gltf) {
     const bed = gltf.scene;
-    bed.position.set(-10,0,0.5);
+    bed.position.set(-10,0,0.1);
     bed.scale.set(15,15,15);
     bed.rotation.y = THREE.MathUtils.degToRad(-90);
     scene.add(bed);
@@ -137,7 +137,7 @@ loader.load('models/restRoom/bed.glb', function(gltf) {
 
 loader.load('models/restRoom/bed.glb', function(gltf) {
     const bed = gltf.scene;
-    bed.position.set(-20,0,0.5);
+    bed.position.set(-20,0,0.1);
     bed.scale.set(15,15,15);
     bed.rotation.y = THREE.MathUtils.degToRad(-90);
     scene.add(bed);
@@ -145,7 +145,7 @@ loader.load('models/restRoom/bed.glb', function(gltf) {
 
 loader.load('models/restRoom/bed.glb', function(gltf) {
     const bed = gltf.scene;
-    bed.position.set(-10,0,24.5);
+    bed.position.set(-10,0,24.9);
     bed.scale.set(15,15,15);
     bed.rotation.y = THREE.MathUtils.degToRad(-270);
     scene.add(bed);
@@ -153,12 +153,27 @@ loader.load('models/restRoom/bed.glb', function(gltf) {
 
 loader.load('models/restRoom/bed.glb', function(gltf) {
     const bed = gltf.scene;
-    bed.position.set(-20,0,24.5);
+    bed.position.set(-20,0,24.9);
     bed.scale.set(15,15,15);
     bed.rotation.y = THREE.MathUtils.degToRad(-270);
     scene.add(bed);
 });
 
+loader.load('models/restRoom/wall.glb', function(gltf) {
+    const bed = gltf.scene;
+    bed.position.set(-15,0,-0.5);
+    bed.scale.set(15,15,15);
+    bed.rotation.y = THREE.MathUtils.degToRad(-180);
+    scene.add(bed);
+});
+
+loader.load('models/restRoom/wall.glb', function(gltf) {
+    const bed = gltf.scene;
+    bed.position.set(-15,0,15.5);
+    bed.scale.set(15,15,15);
+    bed.rotation.y = THREE.MathUtils.degToRad(-180);
+    scene.add(bed);
+});
 
 //Surgical Room 1
 
