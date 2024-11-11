@@ -24,6 +24,8 @@ function main() {
 
     const progressBar = document.getElementById("progress-bar")
 
+    const startTime = performance.now();
+
     loadingManager.onProgress = function(url, loaded, total) {
         progressBar.value = (loaded / total) * 100;
     }
@@ -31,6 +33,9 @@ function main() {
     const progressBarContainer = document.querySelector(".progress-bar-container")
 
     loadingManager.onLoad = function() {
+        const endTime = performance.now();
+        const loadTime = (endTime - startTime) / 1000;
+        console.log(`Total loading time: ${loadTime.toFixed(2)} seconds`);
         progressBarContainer.style.display = "none"
     }
 
@@ -62,8 +67,9 @@ function main() {
     controls.enableDamping = true;
 
     //Renderer
-    const renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, powerPreference: 'high-performance'});
+    const renderer = new THREE.WebGLRenderer({canvas: canvas, powerPreference: 'high-performance'});
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio((window.devicePixelRatio) > 1.5 ? 1.5 : window.devicePixelRatio);
 
     window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
