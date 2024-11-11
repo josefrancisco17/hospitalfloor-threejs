@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 
+
 //Performance Measurement
 const stats = new Stats();
 document.body.appendChild(stats.dom);
@@ -14,6 +15,22 @@ stats.dom.style.right = '0px';
 stats.dom.style.left = 'auto';
 
 const scene = new THREE.Scene();
+
+const loadingManager = new THREE.LoadingManager()
+
+const progressBar = document.getElementById("progress-bar")
+
+loadingManager.onProgress = function(url, loaded, total) {
+    progressBar.value = (loaded / total) * 100;
+}
+
+const progressBarContainer = document.querySelector(".progress-bar-container")
+
+loadingManager.onLoad = function() {
+    progressBarContainer.style.display = "none"
+}
+
+const loader = new GLTFLoader(loadingManager);
 
 const axesHelper = new THREE.AxesHelper( 5 );
 axesHelper.position.set(0,10,0);
@@ -91,9 +108,6 @@ createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
 createFloor(50,50)
 
 //Reception Room
-const loader = new GLTFLoader();
-
-
 const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
 hemisphereLight.position.set(0, 10, 0);
 scene.add(hemisphereLight);
