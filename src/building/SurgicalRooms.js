@@ -66,12 +66,12 @@ export function SurgicalRooms(scene, loader) {
         scene.add(cabinet3);
     });
 
-    loader.load('models/surgicalRoom/operating_bench.glb', function(gltf) {
-        const operating_bench = gltf.scene;
-        operating_bench.scale.set(4, 4, 4);
-        operating_bench.position.set(16, 0.35, -3.5);
-        scene.add(operating_bench);
-        operating_bench.rotation.y = THREE.MathUtils.degToRad(15);
+    loader.load('models/surgicalRoom/instrument_table.glb', function(gltf) {
+        const instrument_table = gltf.scene;
+        instrument_table.scale.set(2, 2, 2);
+        instrument_table.position.set(16, 0.1, -3.5);
+        scene.add(instrument_table);
+        instrument_table.rotation.y = THREE.MathUtils.degToRad(90);
     });
 
     loader.load('models/surgicalRoom/doctor_chair.glb', function(gltf) {
@@ -82,13 +82,6 @@ export function SurgicalRooms(scene, loader) {
         surgery_chair.rotation.y = THREE.MathUtils.degToRad(15);
     });
 
-    loader.load('models/surgicalRoom/paintings/seaPainting.glb', function(gltf) {
-        const sea_painting = gltf.scene;
-        sea_painting.scale.set(2, 2, 2);
-        sea_painting.position.set(5.9, 3.5, -2.8);
-        scene.add(sea_painting);
-    });
-
     loader.load('models/surgicalRoom/hand_sanitizer.glb', function(gltf) {
         const hand_sanitizer = gltf.scene;
         hand_sanitizer.scale.set(0.5, 0.5, 0.5);
@@ -97,6 +90,7 @@ export function SurgicalRooms(scene, loader) {
         hand_sanitizer.rotation.y = THREE.MathUtils.degToRad(90);
     });
     // Lights
+    /*
     loader.load('models/surgicalRoom/ceiling_lights.glb', function(gltf) {
         const ceiling_lights = gltf.scene;
         ceiling_lights.scale.set(3, 3, 3);
@@ -138,6 +132,7 @@ export function SurgicalRooms(scene, loader) {
         ceiling_lights3.position.set(21, 6, -3.5);
         scene.add(ceiling_lights3);
     });
+    */
     // Machines
     loader.load('models/surgicalRoom/operating_machine1.glb', function(gltf) {
         const operating_machine1 = gltf.scene;
