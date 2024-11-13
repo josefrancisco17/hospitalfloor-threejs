@@ -114,16 +114,11 @@ export function Building(scene, loader) {
         door.position.set(-4.6,0,12.5);
         scene.add(door);
     });
-    loader.load('models/building/wall.glb', function(gltf) {
-        const wall = gltf.scene;
-        wall.scale.set(15, 15, 15);
-        wall.position.set(-4.6,0,7.5);
-        scene.add(wall);
-    });
     loader.load('models/building/window.glb', function(gltf) {
         const window = gltf.scene;
-        window.scale.set(15, 15, 15);
+        window.scale.set(0.04, 0.04, 0.04);
         window.position.set(-4.6,0,17.5);
+        window.rotation.y = THREE.MathUtils.degToRad(90);
         scene.add(window);
     });
     createWall(0.2, wallHeight, 10, -5, wallHeight / 2, 20)
