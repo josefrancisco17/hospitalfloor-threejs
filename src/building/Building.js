@@ -53,6 +53,15 @@ export function Building(scene, loader) {
         scene.add(wall);
     }
 
+    function createDoor( x, y, z) {
+        loader.load('models/building/door.glb', function(gltf) {
+            const door = gltf.scene;
+            door.scale.set(15, 15, 15);
+            door.position.set(x,y,z);
+            scene.add(door);
+        });
+    }
+
     const wallHeight = 7.5;
 
     //Exterior Walls
@@ -62,58 +71,26 @@ export function Building(scene, loader) {
     createWall(0.2, wallHeight, 50, 25, wallHeight / 2, 0);
 
     //Interior Walls SR1
-    loader.load('models/building/door.glb', function(gltf) {
-        const door = gltf.scene;
-        door.scale.set(15, 15, 15);
-        door.position.set(-4.6,0,-6);
-        scene.add(door);
-    });
     createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -10)
     createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -2.5)
     createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
 
     //Interior Walls SR2
-    loader.load('models/building/door.glb', function(gltf) {
-        const door = gltf.scene;
-        door.scale.set(15, 15, 15);
-        door.position.set(4.6,0,-6);
-        door.rotation.y = THREE.MathUtils.degToRad(-180);
-        scene.add(door);
-    });
     createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -10)
     createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -2.5)
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
 
     //Interior Walls SR3
-    loader.load('models/building/door.glb', function(gltf) {
-        const door = gltf.scene;
-        door.scale.set(15, 15, 15);
-        door.position.set(-4.6,0,-18.5);
-        scene.add(door);
-    });
     createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -22.4)
     createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -14.25)
     createWall(20, wallHeight, 0.2, -15, wallHeight / 2, -12.5);
 
     //Interior Walls SR4
-    loader.load('models/building/door.glb', function(gltf) {
-        const door = gltf.scene;
-        door.scale.set(15, 15, 15);
-        door.position.set(4.6,0,-18.5);
-        door.rotation.y = THREE.MathUtils.degToRad(-180);
-        scene.add(door);
-    });
     createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -22.4)
     createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -14.25)
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
     //Rest Room
-    loader.load('models/building/door.glb', function(gltf) {
-        const door = gltf.scene;
-        door.scale.set(15, 15, 15);
-        door.position.set(-4.6,0,12.5);
-        scene.add(door);
-    });
     loader.load('models/building/window.glb', function(gltf) {
         const window = gltf.scene;
         window.scale.set(0.04, 0.04, 0.04);
@@ -121,8 +98,11 @@ export function Building(scene, loader) {
         window.rotation.y = THREE.MathUtils.degToRad(90);
         scene.add(window);
     });
-    createWall(0.2, wallHeight, 10, -5, wallHeight / 2, 20)
-    createWall(0.2, wallHeight, 10, -5, wallHeight / 2, 5)
+
+    createDoor(  -4.6, 0 , 12.5)
+    createWall(0.2, 2, 10, -5, 6.5 , 12.5)
+    createWall(0.2, wallHeight, 11.4, -5, wallHeight / 2, 19.4)
+    createWall(0.2, wallHeight, 12.6, -5, wallHeight / 2, 5)
 
     //Reception Room
     createWall(0.2, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
