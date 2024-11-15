@@ -62,6 +62,16 @@ export function Building(scene, loader) {
         });
     }
 
+    function createWindow(x, y, z) {
+        loader.load('models/building/window.glb', function(gltf) {
+            const window = gltf.scene;
+            window.scale.set(0.04, 0.04, 0.04);
+            window.position.set(x, y, z);
+            window.rotation.y = THREE.MathUtils.degToRad(90);
+            scene.add(window);
+        });
+    }
+
     const wallHeight = 7.5;
 
     //Exterior Walls
@@ -91,14 +101,7 @@ export function Building(scene, loader) {
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
     //Rest Room
-    loader.load('models/building/window.glb', function(gltf) {
-        const window = gltf.scene;
-        window.scale.set(0.04, 0.04, 0.04);
-        window.position.set(-4.6,0,17.5);
-        window.rotation.y = THREE.MathUtils.degToRad(90);
-        scene.add(window);
-    });
-
+    createWindow(0,0,0)
     createDoor(  -4.6, 0 , 12.5)
     createWall(0.2, 2, 10, -5, 6.5 , 12.5)
     createWall(0.2, wallHeight, 11.4, -5, wallHeight / 2, 19.4)
