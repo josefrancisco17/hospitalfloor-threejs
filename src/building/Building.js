@@ -63,6 +63,16 @@ export function Building(scene, loader) {
         });
     }
 
+    function createAutomaticDoor( x, y, z, rotation) {
+        loader.load('models/building/automaticDoor.glb', function(gltf) {
+            const door = gltf.scene;
+            door.scale.set(0.0259, 0.0259, 0.0259);
+            door.position.set(x,y,z);
+            door.rotation.y = THREE.MathUtils.degToRad(rotation);
+            scene.add(door);
+        });
+    }
+
     function createWindow(x, y, z) {
         loader.load('models/building/window.glb', function(gltf) {
             const window = gltf.scene;
@@ -79,7 +89,8 @@ export function Building(scene, loader) {
     createWall(50, wallHeight, 0.2, 0, wallHeight / 2, -25);
     createWall(50, wallHeight, 0.2, 0, wallHeight / 2, 25);
     createWall(0.2, wallHeight, 50, -25, wallHeight / 2, 0);
-    createWall(0.2, wallHeight, 50, 25, wallHeight / 2, 0);
+    createWall(0.2, wallHeight, 40, 25, wallHeight / 2, -5);
+    createWall(0.2, wallHeight, 2, 25, wallHeight / 2, 24);
 
     //Interior Walls SR1
     createDoor(  -4.6, 0 , -6.2, 0)
@@ -117,9 +128,10 @@ export function Building(scene, loader) {
     createWall(0.2, wallHeight, 12.6, -5, wallHeight / 2, 5)
 
     //Reception Room
+    createAutomaticDoor(  4.8, 0 , 19,90)
+    createAutomaticDoor(  24.8, 0 , 19,90)
     createWall(0.2, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
     createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
-
 
     createFloor(50,50)
 }
