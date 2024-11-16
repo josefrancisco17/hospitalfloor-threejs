@@ -53,11 +53,12 @@ export function Building(scene, loader) {
         scene.add(wall);
     }
 
-    function createDoor( x, y, z) {
+    function createDoor( x, y, z, rotation) {
         loader.load('models/building/door.glb', function(gltf) {
             const door = gltf.scene;
             door.scale.set(15, 15, 15);
             door.position.set(x,y,z);
+            door.rotation.y = THREE.MathUtils.degToRad(rotation);
             scene.add(door);
         });
     }
@@ -91,19 +92,23 @@ export function Building(scene, loader) {
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
 
     //Interior Walls SR3
-    createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -22.4)
+    createDoor(  -4.6, 0 , -17.9, 0)
+    createWall(0.2, 2, 5, -5, 6.5 , -18)
+    createWall(0.2, wallHeight, 6, -5, wallHeight / 2, -22.1)
     createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -14.25)
     createWall(20, wallHeight, 0.2, -15, wallHeight / 2, -12.5);
 
     //Interior Walls SR4
-    createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -22.4)
+    createDoor(  4.6, 0 , -17.9, 180)
+    createWall(0.2, 2, 5, 5, 6.5 , -18)
+    createWall(0.2, wallHeight, 6, 5, wallHeight / 2, -22.1)
     createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -14.25)
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
     //Rest Room
     createWindow(0,0,0)
-    createDoor(  -4.6, 0 , 12.5)
-    createWall(0.2, 2, 10, -5, 6.5 , 12.5)
+    createDoor(  -4.6, 0 , 12.5,0)
+    createWall(0.2, 2, 5, -5, 6.5 , 12.5)
     createWall(0.2, wallHeight, 11.4, -5, wallHeight / 2, 19.4)
     createWall(0.2, wallHeight, 12.6, -5, wallHeight / 2, 5)
 
