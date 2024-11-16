@@ -82,12 +82,16 @@ export function Building(scene, loader) {
     createWall(0.2, wallHeight, 50, 25, wallHeight / 2, 0);
 
     //Interior Walls SR1
-    createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -10)
+    createDoor(  -4.6, 0 , -6.2, 0)
+    createWall(0.2, 2, 5, -5, 6.5 , -6.2)
+    createWall(0.2, wallHeight, 5.2, -5, wallHeight / 2, -10)
     createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -2.5)
     createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
 
     //Interior Walls SR2
-    createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -10)
+    createDoor(  4.6, 0 , -6.2, 180)
+    createWall(0.2, 2, 5, 5, 6.5 , -6.2)
+    createWall(0.2, wallHeight, 5.2, 5, wallHeight / 2, -10)
     createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -2.5)
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
 
