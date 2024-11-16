@@ -7,10 +7,7 @@ import { Corridor } from "./building/Corridor.js";
 import { Reception } from "./building/Reception.js";
 import { RestRoom } from "./building/RestRoom.js";
 
-import { SurgicalRoom1 } from "./building/SurgicalRoom1.js";
-import { SurgicalRoom2 } from "./building/SurgicalRoom2.js";
-import { SurgicalRoom3 } from "./building/SurgicalRoom3.js";
-import { SurgicalRoom4 } from "./building/SurgicalRoom4.js";
+import { SurgicalRoom } from "./building/SurgicalRoom.js";
 
 function main() {
     //Performance Measurement
@@ -54,10 +51,7 @@ function main() {
     Corridor(scene, loader);
     Reception(scene, loader);
     RestRoom(scene, loader);
-    SurgicalRoom1(scene, loader);
-    SurgicalRoom2(scene, loader);
-    SurgicalRoom3(scene, loader);
-    SurgicalRoom4(scene, loader);
+    SurgicalRoom(scene, loader);
 
     //Camera
     const camera = new THREE.PerspectiveCamera(
