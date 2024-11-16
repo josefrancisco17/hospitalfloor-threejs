@@ -2,8 +2,14 @@ import * as THREE from "three";
 
 export function SurgicalRoom(scene, loader) {
 
+    const directionalLightS1 = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLightS1.position.set(-16, 0, -6);
     const directionalLightS2 = new THREE.DirectionalLight(0xffffff, 1);
     directionalLightS2.position.set(16, 10, -6);
+    const directionalLightS3 = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLightS3.position.set(-16, 0, -18.5);
+    const directionalLightS4 = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLightS4.position.set(16, 0, -18.5);
 
     scene.add(directionalLightS2);
 
