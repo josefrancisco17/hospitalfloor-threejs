@@ -76,7 +76,7 @@ export function Building(scene, loader) {
     function createWindow(x, y, z) {
         loader.load('models/building/window.glb', function(gltf) {
             const window = gltf.scene;
-            window.scale.set(0.04, 0.04, 0.04);
+            window.scale.set(0.058, 0.042, 0.04);
             window.position.set(x, y, z);
             window.rotation.y = THREE.MathUtils.degToRad(90);
             scene.add(window);
@@ -121,11 +121,18 @@ export function Building(scene, loader) {
     createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
 
     //Rest Room
-    createWindow(0,0,0)
+    createWindow(-5,3.1,5.7)
+    createWindow(-5,3.1,19.4)
     createDoor(  -4.6, 0 , 12.5,0)
-    createWall(0.2, 2, 5, -5, 6.5 , 12.5)
-    createWall(0.2, wallHeight, 11.4, -5, wallHeight / 2, 19.4)
-    createWall(0.2, wallHeight, 12.6, -5, wallHeight / 2, 5)
+    createWall(0.2, 1, 25, -5, 7 , 12.5)
+    createWall(0.2, 1, 5, -5, 6 , 12.5)
+    createWall(0.2, 4, 14.55, -5, 1 , 4)
+    createWall(0.2, 4, 11.3, -5, 1 , 19.3)
+    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 23.5)
+    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 15.17)
+    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 1.6)
+    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 9.77)
+
 
     //Reception Room
     createAutomaticDoor(  4.8, 0 , 19,90)
