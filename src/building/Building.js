@@ -86,9 +86,13 @@ export function Building(scene, loader) {
     const wallHeight = 7.5;
 
     //Exterior Walls
+    createWindow(-25,3.1,12)
     createWall(50, wallHeight, 0.2, 0, wallHeight / 2, -25);
     createWall(50, wallHeight, 0.2, 0, wallHeight / 2, 25);
-    createWall(0.2, wallHeight, 50, -25, wallHeight / 2, 0);
+    createWall(0.2, wallHeight, 34.5, -25, wallHeight / 2, -8);
+    createWall(0.2, wallHeight, 10.5, -25, wallHeight / 2, 20  );
+    createWall(0.2, 1, 15, -25, 7 , 12.5)
+    createWall(0.2, 3, 25, -25, 1.5 , 4)
     createWall(0.2, wallHeight, 40, 25, wallHeight / 2, -5);
     createWall(0.2, wallHeight, 2, 25, wallHeight / 2, 24);
 
@@ -126,8 +130,8 @@ export function Building(scene, loader) {
     createDoor(  -4.6, 0 , 12.5,0)
     createWall(0.2, 1, 25, -5, 7 , 12.5)
     createWall(0.2, 1, 5, -5, 6 , 12.5)
-    createWall(0.2, 4, 14.55, -5, 1 , 4)
-    createWall(0.2, 4, 11.3, -5, 1 , 19.3)
+    createWall(0.2, 3, 14.55, -5, 1.5 , 4)
+    createWall(0.2, 3, 11.3, -5, 1.5 , 19.3)
     createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 23.5)
     createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 15.17)
     createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 1.6)
