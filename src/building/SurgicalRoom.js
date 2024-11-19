@@ -23,13 +23,13 @@ export function SurgicalRoom(scene, loader) {
 
     loader.load('models/surgicalRoom/cabinets.glb', function(gltf) {
         const cabinet = gltf.scene;
-        cabinet.scale.set(-3, 5, 3);
+        cabinet.scale.set(3, 5, 3);
         cabinet.position.set(-12, 0, -12);
         scene.add(cabinet);
     });
     loader.load('models/surgicalRoom/cabinets.glb', function(gltf) {
         const cabinet = gltf.scene;
-        cabinet.scale.set(3, 5, 3);
+        cabinet.scale.set(-3, 5, 3);
         cabinet.position.set(-14.1, 0, -12);
         scene.add(cabinet);
     });
@@ -69,7 +69,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/hand_sanitizer.glb', function(gltf) {
         const hand_sanitizer = gltf.scene;
         hand_sanitizer.scale.set(0.5, 0.5, -0.5);
-        hand_sanitizer.position.set(-4.7, 2.5, -8.5);
+        hand_sanitizer.position.set(-4.7, 2.5, -4);
         scene.add(hand_sanitizer);
         hand_sanitizer.rotation.y = THREE.MathUtils.degToRad(90);
     });
@@ -180,13 +180,13 @@ export function SurgicalRoom(scene, loader) {
 
     loader.load('models/surgicalRoom/cabinets.glb', function(gltf) {
         const cabinet = gltf.scene;
-        cabinet.scale.set(-3, 5, 3);
+        cabinet.scale.set(3, 5, 3);
         cabinet.position.set(-12, 0, -24.5);
         scene.add(cabinet);
     });
     loader.load('models/surgicalRoom/cabinets.glb', function(gltf) {
         const cabinet = gltf.scene;
-        cabinet.scale.set(3, 5, 3);
+        cabinet.scale.set(-3, 5, 3);
         cabinet.position.set(-14.1, 0, -24.5);
         scene.add(cabinet);
     });
@@ -226,7 +226,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/hand_sanitizer.glb', function(gltf) {
         const hand_sanitizer = gltf.scene;
         hand_sanitizer.scale.set(0.5, 0.5, -0.5);
-        hand_sanitizer.position.set(-4.7, 2.5, -21);
+        hand_sanitizer.position.set(-4.7, 2.5, -16);
         scene.add(hand_sanitizer);
         hand_sanitizer.rotation.y = THREE.MathUtils.degToRad(90);
     });
@@ -305,7 +305,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/hand_sanitizer.glb', function(gltf) {
         const hand_sanitizer = gltf.scene;
         hand_sanitizer.scale.set(0.5, 0.5, 0.5);
-        hand_sanitizer.position.set(4.7, 2.5, -21);
+        hand_sanitizer.position.set(4.7, 2.5, -20);
         scene.add(hand_sanitizer);
         hand_sanitizer.rotation.y = THREE.MathUtils.degToRad(90);
     });
