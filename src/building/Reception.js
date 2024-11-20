@@ -91,14 +91,14 @@ export function Reception(scene, loader) {
     loader.load('models/reception/plant.glb', function(gltf) {
         const plant = gltf.scene;
         plant.scale.set(4, 4, 4);
-        plant.position.set(5, 0.01,14);
+        plant.position.set(5, 0.01, 14);
         scene.add(plant);
     });
 
     loader.load('models/reception/plant.glb', function(gltf) {
         const plant = gltf.scene;
         plant.scale.set(4, 4, 4);
-        plant.position.set(23, 0.01,7);
+        plant.position.set(23, 0.01, 14);
         scene.add(plant);
     });
 }
