@@ -16,7 +16,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
         const cabinet = gltf.scene;
         cabinet.scale.set(0.8, 0.20, -0.30);
-        cabinet.position.set(-24, 0, -5.3);
+        cabinet.position.set(-24, 0.2, -5.3);
         scene.add(cabinet);
         cabinet.rotation.y = THREE.MathUtils.degToRad(90);
     });
@@ -95,7 +95,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
         const cabinet = gltf.scene;
         cabinet.scale.set(0.8, 0.20, 0.30);
-        cabinet.position.set(24, 0, -4.8);
+        cabinet.position.set(24, 0.2, -4.8);
         scene.add(cabinet);
         cabinet.rotation.y = THREE.MathUtils.degToRad(90);
     });
@@ -173,7 +173,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
         const cabinet = gltf.scene;
         cabinet.scale.set(0.8, 0.20, -0.30);
-        cabinet.position.set(-24, 0, -17.8);
+        cabinet.position.set(-24, 0.2, -17.8);
         scene.add(cabinet);
         cabinet.rotation.y = THREE.MathUtils.degToRad(90);
     });
@@ -252,7 +252,7 @@ export function SurgicalRoom(scene, loader) {
     loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
         const cabinet = gltf.scene;
         cabinet.scale.set(0.8, 0.20, 0.30);
-        cabinet.position.set(24, 0, -17.3);
+        cabinet.position.set(24, 0.2, -17.3);
         scene.add(cabinet);
         cabinet.rotation.y = THREE.MathUtils.degToRad(90);
     });

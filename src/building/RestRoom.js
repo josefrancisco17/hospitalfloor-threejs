@@ -9,7 +9,7 @@ export function RestRoom(scene, loader) {
 
     loader.load('models/restRoom/bed.glb', function(gltf) {
         const bed = gltf.scene;
-        bed.position.set(-10,0,0.1);
+        bed.position.set(-10,0.1,0.15);
         bed.scale.set(15,15,15);
         bed.rotation.y = THREE.MathUtils.degToRad(-90);
         scene.add(bed);
@@ -17,7 +17,7 @@ export function RestRoom(scene, loader) {
 
     loader.load('models/restRoom/bed.glb', function(gltf) {
         const bed = gltf.scene;
-        bed.position.set(-20,0,0.1);
+        bed.position.set(-20,0.1,0.15);
         bed.scale.set(15,15,15);
         bed.rotation.y = THREE.MathUtils.degToRad(-90);
         scene.add(bed);
@@ -25,7 +25,7 @@ export function RestRoom(scene, loader) {
 
     loader.load('models/restRoom/bed.glb', function(gltf) {
         const bed = gltf.scene;
-        bed.position.set(-10,0,24.9);
+        bed.position.set(-10,0.1,24.85);
         bed.scale.set(15,15,15);
         bed.rotation.y = THREE.MathUtils.degToRad(-270);
         scene.add(bed);
@@ -33,7 +33,7 @@ export function RestRoom(scene, loader) {
 
     loader.load('models/restRoom/bed.glb', function(gltf) {
         const bed = gltf.scene;
-        bed.position.set(-20,0,24.9);
+        bed.position.set(-20,0.1,24.85);
         bed.scale.set(15,15,15);
         bed.rotation.y = THREE.MathUtils.degToRad(-270);
         scene.add(bed);

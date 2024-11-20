@@ -47,7 +47,7 @@ export function Reception(scene, loader) {
     loader.load('models/reception/ticket.glb', function(gltf) {
         const ticket = gltf.scene;
         ticket.scale.set(3, 3, 3);
-        ticket.position.set(11, 0.01,6);
+        ticket.position.set(11, 0.02,6);
         ticket.rotation.y = Math.PI / 2;
         scene.add(ticket);
     });
@@ -55,7 +55,7 @@ export function Reception(scene, loader) {
     loader.load('models/reception/ticket.glb', function(gltf) {
         const ticket = gltf.scene;
         ticket.scale.set(3, 3, 3);
-        ticket.position.set(11, 0.01,8);
+        ticket.position.set(11, 0.02,8);
         ticket.rotation.y = Math.PI / 2;
         scene.add(ticket);
     });
