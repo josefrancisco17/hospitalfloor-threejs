@@ -23,6 +23,7 @@ export function Corridor(scene, loader) {
         scene.add(dispenser1);
     });
 
+
     loader.load('models/corridor/waiting_couch.glb', function(gltf) {
         const couch1 = gltf.scene;
         couch1.scale.set(-1, 1, -1);
