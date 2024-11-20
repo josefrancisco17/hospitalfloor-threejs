@@ -42,10 +42,26 @@ export function Corridor(scene, loader) {
 
     loader.load('models/corridor/waiting_couch.glb', function(gltf) {
         const couch3 = gltf.scene;
-        couch3.scale.set(-1, 1, -1);
-        couch3.position.set(0, 0, -24.3);
+        couch3.scale.set(1, 1, 1);
+        couch3.position.set(-4.3, 0, -12.5);
         scene.add(couch3);
-        couch3.rotation.y = THREE.MathUtils.degToRad(88);
+        couch3.rotation.y = THREE.MathUtils.degToRad(-2);
+    });
+
+    loader.load('models/corridor/waiting_couch.glb', function(gltf) {
+        const couch4 = gltf.scene;
+        couch4.scale.set(1, 1, 1);
+        couch4.position.set(-4.3, 0, 19.5);
+        scene.add(couch4);
+        couch4.rotation.y = THREE.MathUtils.degToRad(-2);
+    });
+
+    loader.load('models/corridor/waiting_couch.glb', function(gltf) {
+        const couch5 = gltf.scene;
+        couch5.scale.set(1, 1, 1);
+        couch5.position.set(-4.3, 0, 5.7);
+        scene.add(couch5);
+        couch5.rotation.y = THREE.MathUtils.degToRad(-2);
     });
 
     loader.load('models/surgicalRoom/hand_sanitizer.glb', function(gltf) {
@@ -96,13 +112,13 @@ export function Corridor(scene, loader) {
         hand_sanitizer_6.rotation.y = THREE.MathUtils.degToRad(90);
     });
 
-    loader.load('models/corridor/room1.glb', function(gltf) {
+   /* loader.load('models/corridor/room1.glb', function(gltf) {
         const hand_sanitizer_6 = gltf.scene;
         hand_sanitizer_6.scale.set(-2, 2, -2);
         hand_sanitizer_6.position.set(4.9, 6.1, -6.3);
         scene.add(hand_sanitizer_6);
         hand_sanitizer_6.rotation.y = THREE.MathUtils.degToRad(90);
-    });
+    }); */
 
     loader.load('models/reception/plant.glb', function(gltf) {
         const plant1 = gltf.scene;
@@ -116,5 +132,19 @@ export function Corridor(scene, loader) {
         plant2.scale.set(4, 4, -4);
         plant2.position.set(-5.2, 0, -24);
         scene.add(plant2);
+    });
+
+    loader.load('models/reception/plant.glb', function(gltf) {
+        const plant3 = gltf.scene;
+        plant3.scale.set(-4, 4, -4);
+        plant3.position.set(5.2, 0, 24);
+        scene.add(plant3);
+    });
+
+    loader.load('models/reception/plant.glb', function(gltf) {
+        const plant4 = gltf.scene;
+        plant4.scale.set(-4, 4, -4);
+        plant4.position.set(5.2, 0, -24);
+        scene.add(plant4);
     });
 }
