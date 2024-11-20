@@ -30,8 +30,17 @@ export function Reception(scene, loader) {
 
     loader.load('models/reception/Tv.glb', function(gltf) {
         const tv = gltf.scene;
-        tv.scale.set(6, 6, 6);
-        tv.position.set(15.5, 2,9.2);
+        tv.scale.set(3, 3, 3);
+        tv.position.set(9.6, 4.5 ,9.65);
+        tv.rotation.y = THREE.MathUtils.degToRad(90);
+        scene.add(tv);
+    });
+
+    loader.load('models/reception/Tv.glb', function(gltf) {
+        const tv = gltf.scene;
+        tv.scale.set(3, 3, 3);
+        tv.position.set(20.4, 4.5 ,9.65);
+        tv.rotation.y = THREE.MathUtils.degToRad(-90);
         scene.add(tv);
     });
 
@@ -53,15 +62,15 @@ export function Reception(scene, loader) {
 
     loader.load('models/reception/waitingBench.glb', function(gltf) {
         const waitingBench = gltf.scene;
-        waitingBench.scale.set(4, 4, 4);
-        waitingBench.position.set(18.8, 0.01,25);
+        waitingBench.scale.set(4, 4, -4);
+        waitingBench.position.set(18.8, 0.01,14);
         scene.add(waitingBench);
     });
 
     loader.load('models/reception/waitingBench.glb', function(gltf) {
         const waitingBench = gltf.scene;
-        waitingBench.scale.set(4, 4, 4);
-        waitingBench.position.set(18.8, 0.01,21);
+        waitingBench.scale.set(4, 4, -4);
+        waitingBench.position.set(18.8, 0.01,6.2);
         scene.add(waitingBench);
     });
 
@@ -69,6 +78,13 @@ export function Reception(scene, loader) {
         const waitingBench = gltf.scene;
         waitingBench.scale.set(4, 4, 4);
         waitingBench.position.set(18.8, 0.01,17);
+        scene.add(waitingBench);
+    });
+
+    loader.load('models/reception/waitingBench.glb', function(gltf) {
+        const waitingBench = gltf.scene;
+        waitingBench.scale.set(4, 4, 4);
+        waitingBench.position.set(18.8, 0.01,24.8);
         scene.add(waitingBench);
     });
 

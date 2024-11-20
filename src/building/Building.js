@@ -15,7 +15,7 @@ export function Building(scene, loader) {
             roughness: 0.65,
             metalness: 0.25,
             envMapIntensity: 1,
-            side: THREE.DoubleSide
+            side: THREE.DoubleSide,
         });
 
         const floorGeometry = new THREE.PlaneGeometry(width, depth);

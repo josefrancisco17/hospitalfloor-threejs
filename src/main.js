@@ -6,6 +6,7 @@ import { Building } from "./building/Building.js";
 import { Corridor } from "./building/Corridor.js";
 import { Reception } from "./building/Reception.js";
 import { RestRoom } from "./building/RestRoom.js";
+import {initializePatientSystem, PatientRoomController} from "./building/People.js";
 
 import { SurgicalRoom } from "./building/SurgicalRoom.js";
 
@@ -52,6 +53,7 @@ function main() {
     Reception(scene, loader);
     RestRoom(scene, loader);
     SurgicalRoom(scene, loader);
+    initializePatientSystem(scene, loader);
 
     //Camera
     const camera = new THREE.PerspectiveCamera(
@@ -60,7 +62,7 @@ function main() {
         0.1,
         200
     );
-    camera.position.set(-25, 25, 25);
+    camera.position.set(0, 50, 50);
 
     //Controls
     const canvas = document.querySelector("canvas.threejs");
