@@ -26,6 +26,11 @@ function main() {
     // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.screenSpacePanning = true;
+    controls.rotateSpeed = 0.5;
+    controls.zoomSpeed = 1.2;
+    controls.panSpeed = 0.3;
 
     // GLTF Loader
     const loader = new GLTFLoader(loadingManager);
