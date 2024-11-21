@@ -14,3 +14,13 @@ body {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.tp-dfwv {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+

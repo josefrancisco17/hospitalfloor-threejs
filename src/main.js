@@ -6,7 +6,7 @@ import { Building } from "./building/Building.js";
 import { Corridor } from "./building/Corridor.js";
 import { Reception } from "./building/Reception.js";
 import { RestRoom } from "./building/RestRoom.js";
-import {initializePatientSystem, PatientRoomController} from "./building/People.js";
+import {PatientSystem} from "./building/People.js";
 
 import { SurgicalRoom } from "./building/SurgicalRoom.js";
 
@@ -14,11 +14,7 @@ function main() {
     //Performance Measurement
     const stats = new Stats();
     document.body.appendChild(stats.dom);
-    stats.showPanel(0);
-    stats.dom.style.position = 'absolute';
-    stats.dom.style.top = '0px';
-    stats.dom.style.right = '0px';
-    stats.dom.style.left = 'auto';
+    stats.showPanel(2);
 
     const scene = new THREE.Scene();
 
@@ -53,7 +49,7 @@ function main() {
     Reception(scene, loader);
     RestRoom(scene, loader);
     SurgicalRoom(scene, loader);
-    initializePatientSystem(scene, loader);
+    PatientSystem(scene, loader);
 
     //Camera
     const camera = new THREE.PerspectiveCamera(
