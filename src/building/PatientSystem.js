@@ -5,7 +5,7 @@ import config from "../config.json";
 export function PatientSystem(scene, loader) {
     const patientModels = {};
     const roomStates = {};
-    const roomPositions = config.rooms;
+    const roomPositions = config.patientPositions;
     const buttons = {};
     const pane = new Pane({ title: 'Patient Room Controls' });
     const folder = pane.addFolder({ title: 'See Available Rooms' });
@@ -51,10 +51,10 @@ export function PatientSystem(scene, loader) {
 
     function updateButtonStates() {
         Object.entries(roomStates).forEach(([roomName, isOccupied]) => {
-            const status = isOccupied ? 'Occupied' : 'Empty';
+            const status = isOccupied ? 'Occupied' : 'Available';
             const btn = buttons[roomName];
             if (btn) {
-                btn.title = `${roomName} (${status})`;
+                btn.title = status;
             }
         });
     }
@@ -72,4 +72,6 @@ export function PatientSystem(scene, loader) {
             await togglePatientInRoom(roomName);
         });
     });
+
+    updateButtonStates();
 }

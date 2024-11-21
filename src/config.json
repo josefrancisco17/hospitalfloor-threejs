@@ -1,10 +1,14 @@
 {
-  "rooms": {
+  "patientPositions": {
     "Room 1": { "x": 15, "y": 2.2, "z": -6.25, "rotation": { "x": -1.57, "y": 0, "z": -1.57 } },
-    "Room 2": {"x": -15, "y": 2.2, "z": -6.25, "rotation": { "x": -1.57, "y": 0, "z": 1.57 } },
+    "Room 2": { "x": -15, "y": 2.2, "z": -6.25, "rotation": { "x": -1.57, "y": 0, "z": 1.57 } },
     "Room 3": { "x": 15, "y": 2.2, "z": -18.75, "rotation": { "x": -1.57, "y": 0, "z": -1.57 } },
     "Room 4": { "x": -15, "y": 2.2, "z": -18.75, "rotation": { "x": -1.57, "y": 0, "z": 1.57 } }
   },
   "wallHeight": 7.5,
-  "wallDepth": 0.2
+  "wallDepth": 0.2,
+  "renderer": {
+    "pixelRatio": 1.5,
+    "powerPreference": "high-performance"
+  }
 }
