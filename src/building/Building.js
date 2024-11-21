@@ -1,6 +1,11 @@
 import * as THREE from "three";
+import config from "../config.json";
 
 export function Building(scene, loader) {
+
+    const wallHeight = config.wallHeight;
+    const wallDepth = config.wallDepth;
+
     //create meshes
     function createFloor(width, depth) {
         const textureLoader = new THREE.TextureLoader();
@@ -83,66 +88,64 @@ export function Building(scene, loader) {
         });
     }
 
-    const wallHeight = 7.5;
-
     //Exterior Walls
     createWindow(-25,3.1,12)
-    createWall(50, wallHeight, 0.2, 0, wallHeight / 2, -25);
-    createWall(50, wallHeight, 0.2, 0, wallHeight / 2, 25);
-    createWall(0.2, wallHeight, 34.5, -25, wallHeight / 2, -8);
-    createWall(0.2, wallHeight, 10.5, -25, wallHeight / 2, 20  );
-    createWall(0.2, 1, 15, -25, 7 , 12.5)
-    createWall(0.2, 3, 25, -25, 1.5 , 4)
-    createWall(0.2, wallHeight, 40, 25, wallHeight / 2, -5);
-    createWall(0.2, wallHeight, 2, 25, wallHeight / 2, 24);
+    createWall(50, wallHeight, wallDepth, 0, wallHeight / 2, -25);
+    createWall(50, wallHeight, wallDepth, 0, wallHeight / 2, 25);
+    createWall(wallDepth, wallHeight, 34.5, -25, wallHeight / 2, -8);
+    createWall(wallDepth, wallHeight, 10.5, -25, wallHeight / 2, 20);
+    createWall(wallDepth, 1, 15, -25, 7 , 12.5)
+    createWall(wallDepth, 3, 25, -25, 1.5 , 4)
+    createWall(wallDepth, wallHeight, 40, 25, wallHeight / 2, -5);
+    createWall(wallDepth, wallHeight, 2, 25, wallHeight / 2, 24);
 
     //Interior Walls SR1
     createDoor(  -4.6, 0 , -6.2, 0)
-    createWall(0.2, 2, 5, -5, 6.5 , -6.2)
-    createWall(0.2, wallHeight, 5.2, -5, wallHeight / 2, -10)
-    createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -2.5)
-    createWall(20, wallHeight, 0.2, -15, wallHeight / 2, 0);
+    createWall(wallDepth, 2, 5, -5, 6.5 , -6.2)
+    createWall(wallDepth, wallHeight, 5.2, -5, wallHeight / 2, -10)
+    createWall(wallDepth, wallHeight, 5, -5, wallHeight / 2, -2.5)
+    createWall(20, wallHeight, wallDepth, -15, wallHeight / 2, 0);
 
     //Interior Walls SR2
     createDoor(  4.6, 0 , -6.2, 180)
-    createWall(0.2, 2, 5, 5, 6.5 , -6.2)
-    createWall(0.2, wallHeight, 5.2, 5, wallHeight / 2, -10)
-    createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -2.5)
-    createWall(20, wallHeight, 0.2, 15, wallHeight / 2, 0);
+    createWall(wallDepth, 2, 5, 5, 6.5 , -6.2)
+    createWall(wallDepth, wallHeight, 5.2, 5, wallHeight / 2, -10)
+    createWall(wallDepth, wallHeight, 5, 5, wallHeight / 2, -2.5)
+    createWall(20, wallHeight, wallDepth, 15, wallHeight / 2, 0);
 
     //Interior Walls SR3
     createDoor(  -4.6, 0 , -17.9, 0)
-    createWall(0.2, 2, 5, -5, 6.5 , -18)
-    createWall(0.2, wallHeight, 6, -5, wallHeight / 2, -22.1)
-    createWall(0.2, wallHeight, 5, -5, wallHeight / 2, -14.25)
-    createWall(20, wallHeight, 0.2, -15, wallHeight / 2, -12.5);
+    createWall(wallDepth, 2, 5, -5, 6.5 , -18)
+    createWall(wallDepth, wallHeight, 6, -5, wallHeight / 2, -22.1)
+    createWall(wallDepth, wallHeight, 5, -5, wallHeight / 2, -14.25)
+    createWall(20, wallHeight, wallDepth, -15, wallHeight / 2, -12.5);
 
     //Interior Walls SR4
     createDoor(  4.6, 0 , -17.9, 180)
-    createWall(0.2, 2, 5, 5, 6.5 , -18)
-    createWall(0.2, wallHeight, 6, 5, wallHeight / 2, -22.1)
-    createWall(0.2, wallHeight, 5, 5, wallHeight / 2, -14.25)
-    createWall(20, wallHeight, 0.2, 15, wallHeight / 2, -12.5);
+    createWall(wallDepth, 2, 5, 5, 6.5 , -18)
+    createWall(wallDepth, wallHeight, 6, 5, wallHeight / 2, -22.1)
+    createWall(wallDepth, wallHeight, 5, 5, wallHeight / 2, -14.25)
+    createWall(20, wallHeight, wallDepth, 15, wallHeight / 2, -12.5);
 
     //Rest Room
     createWindow(-5,3.1,5.7)
     createWindow(-5,3.1,19.4)
     createDoor(  -4.6, 0 , 12.5,0)
-    createWall(0.2, 1, 25, -5, 7 , 12.5)
-    createWall(0.2, 1, 5, -5, 6 , 12.5)
-    createWall(0.2, 3, 14.55, -5, 1.5 , 4)
-    createWall(0.2, 3, 11.3, -5, 1.5 , 19.3)
-    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 23.5)
-    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 15.17)
-    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 1.6)
-    createWall(0.2, wallHeight, 3, -5, wallHeight / 2, 9.77)
+    createWall(wallDepth, 1, 25, -5, 7 , 12.5)
+    createWall(wallDepth, 1, 5, -5, 6 , 12.5)
+    createWall(wallDepth, 3, 14.55, -5, 1.5 , 4)
+    createWall(wallDepth, 3, 11.3, -5, 1.5 , 19.3)
+    createWall(wallDepth, wallHeight, 3, -5, wallHeight / 2, 23.5)
+    createWall(wallDepth, wallHeight, 3, -5, wallHeight / 2, 15.17)
+    createWall(wallDepth, wallHeight, 3, -5, wallHeight / 2, 1.6)
+    createWall(wallDepth, wallHeight, 3, -5, wallHeight / 2, 9.77)
 
 
     //Reception Room
     createAutomaticDoor(  4.8, 0 , 19,90)
     createAutomaticDoor(  24.8, 0 , 19,90)
-    createWall(0.2, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
-    createWall(0.2, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
+    createWall(wallDepth, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
+    createWall(wallDepth, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
 
     createFloor(50,50)
 }

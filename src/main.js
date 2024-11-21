@@ -6,7 +6,7 @@ import { Building } from "./building/Building.js";
 import { Corridor } from "./building/Corridor.js";
 import { Reception } from "./building/Reception.js";
 import { RestRoom } from "./building/RestRoom.js";
-import {PatientSystem} from "./building/People.js";
+import {PatientSystem} from "./building/PatientSystem.js";
 
 import { SurgicalRoom } from "./building/SurgicalRoom.js";
 
