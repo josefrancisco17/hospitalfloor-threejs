@@ -28,6 +28,22 @@ export function Reception(scene, loader) {
         scene.add(receptionDesk3);
     });
 
+    loader.load('models/reception/chair.glb', function(gltf) {
+        const chair = gltf.scene;
+        chair.scale.set(0.03, 0.03, 0.03);
+        chair.position.set(8.5, 0 , 2);
+        chair.rotation.y = THREE.MathUtils.degToRad(15);
+        scene.add(chair);
+    });
+
+    loader.load('models/reception/chair.glb', function(gltf) {
+        const chair = gltf.scene;
+        chair.scale.set(0.03, 0.03, 0.03);
+        chair.position.set(21, 0 , 2);
+        chair.rotation.y = THREE.MathUtils.degToRad(-45);
+        scene.add(chair);
+    });
+
     loader.load('models/reception/Tv.glb', function(gltf) {
         const tv = gltf.scene;
         tv.scale.set(3, 3, 3);
