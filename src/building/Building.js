@@ -101,7 +101,7 @@ export function Building(scene, loader) {
     createWall(wallDepth, wallHeight, 10.5, -25, wallHeight / 2, 19.8);
     createWall(wallDepth, 1, 15, -25, 7 , 12.5)
     createWall(wallDepth, 3, 25, -25, 1.5 , 4)
-    createWall(wallDepth, wallHeight, 42.5, 25, wallHeight / 2, -5);
+    createWall(wallDepth, wallHeight, 41.2, 25, wallHeight / 2, -4.4);
     createWall(wallDepth, wallHeight, 4, 25, wallHeight / 2, 23);
     createWall(wallDepth, 2, 19, 25, 6.5 , 14)
     createDoor(25.4, 0 , 17.4,0)
