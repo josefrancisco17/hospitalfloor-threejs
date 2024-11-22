@@ -156,11 +156,11 @@ export function Building(scene, loader) {
     createWall(wallDepth, 2, 19, 5, 6.5 , 14)
     createWall(wallDepth, 2, 5, 5, 6.5 , 1.5)
     createWall(wallDepth, wallHeight, 4, 5, wallHeight / 2, 23)
-    createWall(wallDepth, wallHeight, 13.5, 5, wallHeight / 2, 9.45)
+    createWall(wallDepth, wallHeight, 13.7, 5, wallHeight / 2, 9.45)
 
     //Floor
-    createFloor(20,25, '/textures/building/floor/wood-floor.jpg', 15, 0, 12.5)
-    createFloor(20,25, '/textures/building/floor/wood-floor.jpg', -15, 0, 12.5)
+    createFloor(20,25, '/textures/building/floor/wood1.jpg', 15, 0, 12.5)
+    createFloor(20,25, '/textures/building/floor/wood2.jpg', -15, 0, 12.5)
     createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, 20)
     createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, 10)
     createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, 0)
