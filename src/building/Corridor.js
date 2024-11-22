@@ -23,32 +23,6 @@ export function Corridor(scene, loader) {
         scene.add(dispenser1);
     });
 
-
-    loader.load('models/corridor/waiting_couch.glb', function(gltf) {
-        const couch1 = gltf.scene;
-        couch1.scale.set(-1, 1, -1);
-        couch1.position.set(4.3, 0, 1.5);
-        scene.add(couch1);
-        couch1.rotation.y = THREE.MathUtils.degToRad(-2);
-    });
-
-    loader.load('models/corridor/waiting_couch.glb', function(gltf) {
-        const couch2 = gltf.scene;
-        couch2.scale.set(-1, 1, -1);
-        couch2.position.set(4.3, 0, 9.5);
-        scene.add(couch2);
-        couch2.rotation.y = THREE.MathUtils.degToRad(-2);
-    });
-
-    // Trocar mesa por mesa da Rest Room
-    loader.load('models/corridor/small_table.glb', function(gltf) {
-        const small_table = gltf.scene;
-        small_table.scale.set(2.5, 2.5, 2.5);
-        small_table.position.set(3.5, 0, 5.5);
-        scene.add(small_table);
-        small_table.rotation.y = THREE.MathUtils.degToRad(90);
-    });
-
     loader.load('models/corridor/waiting_couch.glb', function(gltf) {
         const couch3 = gltf.scene;
         couch3.scale.set(1, 1, 1);
@@ -149,6 +123,37 @@ export function Corridor(scene, loader) {
         scene.add(plant4);
     });
 
+    loader.load('models/corridor/extinguisher.glb', function(gltf) {
+        const extinguisher = gltf.scene;
+        extinguisher.scale.set(3, 3, 3);
+        extinguisher.position.set(-4.6, 3, -1);
+        extinguisher.rotation.y = Math.PI / 2;
+        scene.add(extinguisher);
+    });
+
+    loader.load('models/corridor/waiting_couch.glb', function(gltf) {
+        const couch1 = gltf.scene;
+        couch1.scale.set(-1, 1, -1);
+        couch1.position.set(4.3, 0, 5.5);
+        scene.add(couch1);
+        couch1.rotation.y = THREE.MathUtils.degToRad(-2);
+    });
+
+    loader.load('models/corridor/waiting_couch.glb', function(gltf) {
+        const couch2 = gltf.scene;
+        couch2.scale.set(-1, 1, -1);
+        couch2.position.set(4.3, 0, 13.5);
+        scene.add(couch2);
+        couch2.rotation.y = THREE.MathUtils.degToRad(-2);
+    });
+
+    loader.load('models/corridor/small_table.glb', function(gltf) {
+        const small_table = gltf.scene;
+        small_table.scale.set(2.5, 2.5, 2.5);
+        small_table.position.set(3.5, 0, 9.5);
+        scene.add(small_table);
+        small_table.rotation.y = THREE.MathUtils.degToRad(90);
+    });
 
     loader.load('models/corridor/room_plate1.glb', function(gltf) {
         const room_sign_1 = gltf.scene;
@@ -156,14 +161,6 @@ export function Corridor(scene, loader) {
         room_sign_1.position.set(-4.9, 6.1, -10.7);
         scene.add(room_sign_1);
         room_sign_1.rotation.y = THREE.MathUtils.degToRad(90);
-    });
-
-    loader.load('models/corridor/room_plate2.glb', function(gltf) {
-        const room_sign_2 = gltf.scene;
-        room_sign_2.scale.set(-5, 5, -5);
-        room_sign_2.position.set(4.9, 6.1, -1.7);
-        scene.add(room_sign_2);
-        room_sign_2.rotation.y = THREE.MathUtils.degToRad(90);
     });
 
     loader.load('models/corridor/room_plate3.glb', function(gltf) {
@@ -180,6 +177,28 @@ export function Corridor(scene, loader) {
         room_sign_4.position.set(4.9, 6.1, -13.2);
         scene.add(room_sign_4);
         room_sign_4.rotation.y = THREE.MathUtils.degToRad(90);
+    });
+
+    loader.load('models/corridor/corridor_light.glb', function(gltf) {
+        const room_sign_4 = gltf.scene;
+        room_sign_4.scale.set(-5, 5, -190);
+        room_sign_4.position.set(4.9, 7.3, 0);
+        scene.add(room_sign_4);
+    });
+
+    loader.load('models/corridor/corridor_light.glb', function(gltf) {
+        const room_sign_4 = gltf.scene;
+        room_sign_4.scale.set(5, 5, 190);
+        room_sign_4.position.set(-4.9, 7.3, 0);
+        scene.add(room_sign_4);
+    });
+
+    loader.load('models/reception/Tv.glb', function(gltf) {
+        const tv = gltf.scene;
+        tv.scale.set(3, 3, 3);
+        tv.position.set(0.5, 3, 9.9);
+        tv.rotation.y = THREE.MathUtils.degToRad(270);
+        scene.add(tv);
     });
 
 }
