@@ -121,6 +121,14 @@ export function Corridor(scene, loader) {
         hand_sanitizer_6.rotation.y = THREE.MathUtils.degToRad(90);
     });
 
+    loader.load('models/corridor/room1.glb', function(gltf) {
+        const room_sign_1 = gltf.scene;
+        room_sign_1.scale.set(-2, 2, -2);
+        room_sign_1.position.set(4.9, 6.1, -6.3);
+        scene.add(room_sign_1);
+        room_sign_1.rotation.y = THREE.MathUtils.degToRad(90);
+    });
+
     loader.load('models/reception/plant.glb', function(gltf) {
         const plant1 = gltf.scene;
         plant1.scale.set(4, 4, -4);
@@ -148,38 +156,4 @@ export function Corridor(scene, loader) {
         plant4.position.set(5.2, 0, -24);
         scene.add(plant4);
     });
-
-    loader.load('models/corridor/room_plate1.glb', function(gltf) {
-        const room_sign_1 = gltf.scene;
-        room_sign_1.scale.set(5, 5, 5);
-        room_sign_1.position.set(-4.9, 6.1, -10.7);
-        scene.add(room_sign_1);
-        room_sign_1.rotation.y = THREE.MathUtils.degToRad(90);
-    });
-
-    loader.load('models/corridor/room_plate2.glb', function(gltf) {
-        const room_sign_2 = gltf.scene;
-        room_sign_2.scale.set(-5, 5, -5);
-        room_sign_2.position.set(4.9, 6.1, -1.7);
-        scene.add(room_sign_2);
-        room_sign_2.rotation.y = THREE.MathUtils.degToRad(90);
-    });
-
-    loader.load('models/corridor/room_plate3.glb', function(gltf) {
-        const room_sign_3 = gltf.scene;
-        room_sign_3.scale.set(5, 5, 5);
-        room_sign_3.position.set(-4.9, 6.1, -22.5);
-        scene.add(room_sign_3);
-        room_sign_3.rotation.y = THREE.MathUtils.degToRad(90);
-    });
-
-    loader.load('models/corridor/room_plate4.glb', function(gltf) {
-        const room_sign_4 = gltf.scene;
-        room_sign_4.scale.set(-5, 5, -5);
-        room_sign_4.position.set(4.9, 6.1, -13.2);
-        scene.add(room_sign_4);
-        room_sign_4.rotation.y = THREE.MathUtils.degToRad(90);
-    });
-
-
 }
