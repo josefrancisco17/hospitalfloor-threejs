@@ -100,32 +100,32 @@ export function Building(scene, loader) {
     createWall(wallDepth, wallHeight, 2, 25, wallHeight / 2, 24);
 
     //Interior Walls SR1
-    createDoor(  -4.6, 0 , -6.2, 0)
-    createWall(wallDepth, 2, 5, -5, 6.5 , -6.2)
-    createWall(wallDepth, wallHeight, 5.2, -5, wallHeight / 2, -10)
-    createWall(wallDepth, wallHeight, 5, -5, wallHeight / 2, -2.5)
-    createWall(20, wallHeight, wallDepth, -15, wallHeight / 2, 0);
-
-    //Interior Walls SR2
     createDoor(  4.6, 0 , -6.2, 180)
     createWall(wallDepth, 2, 5, 5, 6.5 , -6.2)
     createWall(wallDepth, wallHeight, 5.2, 5, wallHeight / 2, -10)
     createWall(wallDepth, wallHeight, 5, 5, wallHeight / 2, -2.5)
     createWall(20, wallHeight, wallDepth, 15, wallHeight / 2, 0);
 
-    //Interior Walls SR3
-    createDoor(  -4.6, 0 , -17.9, 0)
-    createWall(wallDepth, 2, 5, -5, 6.5 , -18)
-    createWall(wallDepth, wallHeight, 6, -5, wallHeight / 2, -22.1)
-    createWall(wallDepth, wallHeight, 5, -5, wallHeight / 2, -14.25)
-    createWall(20, wallHeight, wallDepth, -15, wallHeight / 2, -12.5);
+    //Interior Walls SR2
+    createDoor(  -4.6, 0 , -6.2, 0)
+    createWall(wallDepth, 2, 5, -5, 6.5 , -6.2)
+    createWall(wallDepth, wallHeight, 5.2, -5, wallHeight / 2, -10)
+    createWall(wallDepth, wallHeight, 5.2, -5, wallHeight / 2, -2.4)
+    createWall(20, wallHeight, wallDepth, -15, wallHeight / 2, 0);
 
-    //Interior Walls SR4
+    //Interior Walls SR3
     createDoor(  4.6, 0 , -17.9, 180)
     createWall(wallDepth, 2, 5, 5, 6.5 , -18)
     createWall(wallDepth, wallHeight, 6, 5, wallHeight / 2, -22.1)
     createWall(wallDepth, wallHeight, 5, 5, wallHeight / 2, -14.25)
     createWall(20, wallHeight, wallDepth, 15, wallHeight / 2, -12.5);
+
+    //Interior Walls SR4
+    createDoor(  -4.6, 0 , -17.9, 0)
+    createWall(wallDepth, 2, 5, -5, 6.5 , -18)
+    createWall(wallDepth, wallHeight, 6, -5, wallHeight / 2, -22.1)
+    createWall(wallDepth, wallHeight, 5, -5, wallHeight / 2, -14.25)
+    createWall(20, wallHeight, wallDepth, -15, wallHeight / 2, -12.5);
 
     //Rest Room
     createWindow(-5,3.1,5.7)
