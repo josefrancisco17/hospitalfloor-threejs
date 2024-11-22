@@ -35,7 +35,7 @@ export function Corridor(scene, loader) {
     loader.load('models/corridor/waiting_couch.glb', function(gltf) {
         const couch1 = gltf.scene;
         couch1.scale.set(-1, 1, -1);
-        couch1.position.set(4.3, 0, 1.5);
+        couch1.position.set(4.3, 0, 5);
         scene.add(couch1);
         couch1.rotation.y = THREE.MathUtils.degToRad(-2);
     });
@@ -43,16 +43,15 @@ export function Corridor(scene, loader) {
     loader.load('models/corridor/waiting_couch.glb', function(gltf) {
         const couch2 = gltf.scene;
         couch2.scale.set(-1, 1, -1);
-        couch2.position.set(4.3, 0, 9.5);
+        couch2.position.set(4.3, 0, 13);
         scene.add(couch2);
         couch2.rotation.y = THREE.MathUtils.degToRad(-2);
     });
 
-    // Trocar mesa por mesa da Rest Room
     loader.load('models/corridor/small_table.glb', function(gltf) {
         const small_table = gltf.scene;
         small_table.scale.set(2.5, 2.5, 2.5);
-        small_table.position.set(3.5, 0, 5.5);
+        small_table.position.set(3.5, 0, 9);
         scene.add(small_table);
         small_table.rotation.y = THREE.MathUtils.degToRad(90);
     });
@@ -163,5 +162,13 @@ export function Corridor(scene, loader) {
         plant4.scale.set(-4, 4, -4);
         plant4.position.set(5.2, 0, -24);
         scene.add(plant4);
+    });
+
+    loader.load('models/reception/Tv.glb', function(gltf) {
+        const tv = gltf.scene;
+        tv.scale.set(3, 3, 3);
+        tv.position.set(0.5, 3 ,9.5);
+        tv.rotation.y = THREE.MathUtils.degToRad(270);
+        scene.add(tv);
     });
 }

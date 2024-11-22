@@ -103,7 +103,7 @@ export function Building(scene, loader) {
     createDoor(  4.6, 0 , -6.2, 180)
     createWall(wallDepth, 2, 5, 5, 6.5 , -6.2)
     createWall(wallDepth, wallHeight, 5.2, 5, wallHeight / 2, -10)
-    createWall(wallDepth, wallHeight, 5, 5, wallHeight / 2, -2.5)
+    createWall(wallDepth, wallHeight, 5.25, 5, wallHeight / 2, -2.33)
     createWall(20, wallHeight, wallDepth, 15, wallHeight / 2, 0);
 
     //Interior Walls SR2
@@ -144,8 +144,10 @@ export function Building(scene, loader) {
     //Reception Room
     createAutomaticDoor(  4.8, 0 , 19,90)
     createAutomaticDoor(  24.8, 0 , 19,90)
+    createDoor(4.6, 0 , 1.5,180)
+    createWall(wallDepth, 2, 5, 5, 6.5 , 1.5)
     createWall(wallDepth, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
-    createWall(wallDepth, wallHeight, 17.5, 5, wallHeight / 2, 7.5)
+    createWall(wallDepth, wallHeight, 12.2, 5, wallHeight / 2, 8.8)
 
     createFloor(50,50)
 }
