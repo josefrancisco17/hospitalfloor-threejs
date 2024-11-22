@@ -68,15 +68,17 @@ export function Building(scene, loader) {
         });
     }
 
-    function createAutomaticDoor( x, y, z, rotation) {
-        loader.load('models/building/automaticDoor.glb', function(gltf) {
-            const door = gltf.scene;
-            door.scale.set(0.0259, 0.0259, 0.0259);
-            door.position.set(x,y,z);
-            door.rotation.y = THREE.MathUtils.degToRad(rotation);
-            scene.add(door);
+    function createMirrorDoor( x, y, z, rotation) {
+        loader.load('models/building/mirrorDoor.glb', function(gltf) {
+            const mirrorDoor = gltf.scene;
+            mirrorDoor.scale.set(15, 15, 15);
+            mirrorDoor.position.set(x,y,z);
+            mirrorDoor.rotation.y = THREE.MathUtils.degToRad(rotation);
+            scene.add(mirrorDoor);
         });
     }
+
+
 
     function createWindow(x, y, z) {
         loader.load('models/building/window.glb', function(gltf) {
@@ -96,8 +98,11 @@ export function Building(scene, loader) {
     createWall(wallDepth, wallHeight, 10.5, -25, wallHeight / 2, 19.8);
     createWall(wallDepth, 1, 15, -25, 7 , 12.5)
     createWall(wallDepth, 3, 25, -25, 1.5 , 4)
-    createWall(wallDepth, wallHeight, 40, 25, wallHeight / 2, -5);
-    createWall(wallDepth, wallHeight, 2, 25, wallHeight / 2, 24);
+    createWall(wallDepth, wallHeight, 42.5, 25, wallHeight / 2, -5);
+    createWall(wallDepth, wallHeight, 4, 25, wallHeight / 2, 23);
+    createWall(wallDepth, 2, 19, 25, 6.5 , 14)
+    createDoor(25.4, 0 , 17.4,0)
+    createMirrorDoor(25.4, 0 , 22.2,0)
 
     //Interior Walls SR1
     createDoor(  4.6, 0 , -6.2, 180)
@@ -142,12 +147,12 @@ export function Building(scene, loader) {
 
 
     //Reception Room
-    createAutomaticDoor(  4.8, 0 , 19,90)
-    createAutomaticDoor(  24.8, 0 , 19,90)
+    createDoor(4.6, 0 , 19.85,180)
+    createMirrorDoor(4.6, 0 , 15.04,180)
     createDoor(4.6, 0 , 1.5,180)
+    createWall(wallDepth, 2, 19, 5, 6.5 , 14)
     createWall(wallDepth, 2, 5, 5, 6.5 , 1.5)
-    createWall(wallDepth, wallHeight, 2.5, 5, wallHeight / 2, 23.75)
-    createWall(wallDepth, wallHeight, 12.2, 5, wallHeight / 2, 8.8)
-
+    createWall(wallDepth, wallHeight, 4, 5, wallHeight / 2, 23)
+    createWall(wallDepth, wallHeight, 14.9, 5, wallHeight / 2, 8.8)
     createFloor(50,50)
 }
