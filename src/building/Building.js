@@ -7,12 +7,12 @@ export function Building(scene, loader) {
     const wallDepth = config.wallDepth;
 
     //create meshes
-    function createFloor(width, depth) {
+    function createFloor(width, depth, floorTexture, x, y, z) {
         const textureLoader = new THREE.TextureLoader();
-        const baseTexture = textureLoader.load('/textures/building/floor/white-brick.png');
+        const baseTexture = textureLoader.load(floorTexture);
 
         baseTexture.wrapS = baseTexture.wrapT = THREE.RepeatWrapping;
-        baseTexture.repeat.set(8, 8);
+        baseTexture.repeat.set(4, 4);
         baseTexture.anisotropy = 16;
 
         const floorMaterial = new THREE.MeshStandardMaterial({
@@ -20,19 +20,22 @@ export function Building(scene, loader) {
             roughness: 0.65,
             metalness: 0.25,
             envMapIntensity: 1,
-            side: THREE.DoubleSide,
+            side: THREE.DoubleSide
         });
 
         const floorGeometry = new THREE.PlaneGeometry(width, depth);
         const floor = new THREE.Mesh(floorGeometry, floorMaterial);
         floor.rotation.x = -Math.PI / 2;
+        floor.position.set(x, y, z); // Set the position
         floor.receiveShadow = true;
         scene.add(floor);
     }
 
+
+
     function createWall(width, height, depth, x, y, z) {
         const textureLoader = new THREE.TextureLoader();
-        const baseTexture = textureLoader.load('/textures/building/wall/Plaster1K.jpg');
+        const baseTexture = textureLoader.load('/textures/building/wall/Plaster.jpg');
 
         baseTexture.wrapS = baseTexture.wrapT = THREE.RepeatWrapping;
         baseTexture.repeat.set(
@@ -154,5 +157,15 @@ export function Building(scene, loader) {
     createWall(wallDepth, 2, 5, 5, 6.5 , 1.5)
     createWall(wallDepth, wallHeight, 4, 5, wallHeight / 2, 23)
     createWall(wallDepth, wallHeight, 13.5, 5, wallHeight / 2, 9.45)
-    createFloor(50,50)
+
+    //Floor
+    createFloor(20,25, '/textures/building/floor/wood-floor.jpg', 15, 0, 12.5)
+    createFloor(20,25, '/textures/building/floor/wood-floor.jpg', -15, 0, 12.5)
+    createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, 20)
+    createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, 10)
+    createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, 0)
+    createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, -10)
+    createFloor(10,10, '/textures/building/floor/tezaro.jpg', 0, 0, -20)
+    createFloor(20,25, '/textures/building/floor/plastic_blue.jpg', 15, 0, -12.5)
+    createFloor(20,25, '/textures/building/floor/plastic_blue.jpg', -15, 0, -12.5)
 }
