@@ -23,6 +23,14 @@ export function Corridor(scene, loader) {
         scene.add(dispenser1);
     });
 
+    loader.load('models/corridor/extintor.glb', function(gltf) {
+        const extintor = gltf.scene;
+        extintor.scale.set(3, 3, 3);
+        extintor.position.set(-4.6, 3, -1);
+        extintor.rotation.y = Math.PI / 2;
+        scene.add(extintor);
+    });
+
 
     loader.load('models/corridor/waiting_couch.glb', function(gltf) {
         const couch1 = gltf.scene;

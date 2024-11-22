@@ -92,8 +92,8 @@ export function Building(scene, loader) {
     createWindow(-25,3.1,12)
     createWall(50, wallHeight, wallDepth, 0, wallHeight / 2, -25);
     createWall(50, wallHeight, wallDepth, 0, wallHeight / 2, 25);
-    createWall(wallDepth, wallHeight, 34.5, -25, wallHeight / 2, -8);
-    createWall(wallDepth, wallHeight, 10.5, -25, wallHeight / 2, 20);
+    createWall(wallDepth, wallHeight, 34.5, -25, wallHeight / 2, -7.85);
+    createWall(wallDepth, wallHeight, 10.5, -25, wallHeight / 2, 19.8);
     createWall(wallDepth, 1, 15, -25, 7 , 12.5)
     createWall(wallDepth, 3, 25, -25, 1.5 , 4)
     createWall(wallDepth, wallHeight, 40, 25, wallHeight / 2, -5);
