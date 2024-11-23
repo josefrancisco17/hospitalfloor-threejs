@@ -124,4 +124,18 @@ export function Reception(scene, loader) {
         plant.position.set(16, 4.5, 0.3);
         scene.add(plant);
     });
+
+    loader.load('models/reception/soda_machine.glb', function(gltf) {
+        const plant = gltf.scene;
+        plant.scale.set(2, 2.5, 2);
+        plant.position.set(8, 0, 24);
+        scene.add(plant);
+    });
+
+    loader.load('models/reception/atm.glb', function(gltf) {
+        const plant = gltf.scene;
+        plant.scale.set(0.35, 0.35, 0.35);
+        plant.position.set(23, 2, 24);
+        scene.add(plant);
+    });
 }
