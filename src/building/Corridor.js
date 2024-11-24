@@ -1,7 +1,6 @@
 import * as THREE from "three";
 
 export function Corridor(scene, loader) {
-    //Cameras
     loader.load('models/corridor/security_camera.glb', function(gltf) {
         const camera1 = gltf.scene;
         camera1.scale.set(-3, 3, 3);
@@ -161,6 +160,14 @@ export function Corridor(scene, loader) {
         room_sign_1.position.set(-4.9, 6.1, -10.7);
         scene.add(room_sign_1);
         room_sign_1.rotation.y = THREE.MathUtils.degToRad(90);
+    });
+
+    loader.load('models/corridor/room_plate2.glb', function(gltf) {
+        const room_sign_2 = gltf.scene;
+        room_sign_2.scale.set(-5, 5, -5);
+        room_sign_2.position.set(4.9, 6.1, -1.5);
+        scene.add(room_sign_2);
+        room_sign_2.rotation.y = THREE.MathUtils.degToRad(90);
     });
 
     loader.load('models/corridor/room_plate3.glb', function(gltf) {

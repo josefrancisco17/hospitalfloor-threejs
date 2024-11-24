@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import Stats from "three/addons/libs/stats.module.js"; // Correct import for stats.js
+import Stats from "three/addons/libs/stats.module.js";
 
 export function Loading() {
     const loadingScreen = document.querySelector(".loading-screen");

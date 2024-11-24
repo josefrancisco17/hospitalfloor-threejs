@@ -3,6 +3,10 @@ import config from "../config.json";
 
 export function Building(scene, loader) {
 
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 3);
+    hemisphereLight.position.set(25, 10, 25);
+    scene.add(hemisphereLight);
+
     const wallHeight = config.wallHeight;
     const wallDepth = config.wallDepth;
 
@@ -26,7 +30,7 @@ export function Building(scene, loader) {
         const floorGeometry = new THREE.PlaneGeometry(width, depth);
         const floor = new THREE.Mesh(floorGeometry, floorMaterial);
         floor.rotation.x = -Math.PI / 2;
-        floor.position.set(x, y, z); // Set the position
+        floor.position.set(x, y, z);
         floor.receiveShadow = true;
         scene.add(floor);
     }
