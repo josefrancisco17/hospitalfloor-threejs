@@ -2,16 +2,23 @@ import * as THREE from "three";
 
 export function SurgicalRoom(scene, loader) {
 
-    const directionalLightS1 = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLightS1.position.set(-16, 0, -6);
-    const directionalLightS2 = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLightS2.position.set(16, 10, -6);
-    const directionalLightS3 = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLightS3.position.set(-16, 0, -18.5);
-    const directionalLightS4 = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLightS4.position.set(16, 0, -18.5);
+    const directionalLightS1 = new THREE.PointLight( 0xff0000, 50, 10 );
+    directionalLightS1.position.set(-18, 4, -6);
+    directionalLightS1.color.setHSL( 0.1, 1, 0.95 );
+    const directionalLightS2 = new THREE.PointLight( 0xff0000, 50, 10 );
+    directionalLightS2.position.set(18, 4, -6);
+    directionalLightS2.color.setHSL( 0.1, 1, 0.95 );
+    const directionalLightS3 = new THREE.PointLight( 0xff0000, 50, 10 );
+    directionalLightS3.position.set(-18, 4, -18.5);
+    directionalLightS3.color.setHSL( 0.1, 1, 0.95 );
+    const directionalLightS4 = new THREE.PointLight( 0xff0000, 50, 10 );
+    directionalLightS4.position.set(18, 4, -18.5);
+    directionalLightS4.color.setHSL( 0.1, 1, 0.95 );
 
+    scene.add(directionalLightS1);
     scene.add(directionalLightS2);
+    scene.add(directionalLightS3);
+    scene.add(directionalLightS4);
 
     loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
         const cabinet = gltf.scene;

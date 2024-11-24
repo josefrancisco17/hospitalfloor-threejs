@@ -1,12 +1,6 @@
 import * as THREE from "three";
 
 export function Reception(scene, loader) {
-    //Reception Room
-    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
-    hemisphereLight.position.set(0, 10, 0);
-    scene.add(hemisphereLight);
-
-
     loader.load('models/reception/ReceptionDesk.glb', function(gltf) {
         const receptionDesk = gltf.scene;
         receptionDesk.scale.set(3, 3, 3);

@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { Pane } from "tweakpane";
 import config from "../config.json";
 
