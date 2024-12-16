@@ -1,7 +1,8 @@
 import { Pane } from "tweakpane";
 import config from "../config.json";
+import * as THREE from "three";
 
-export function PatientSystem(scene, loader) {
+export function PatientSystem(scene, loader, camera, controls) {
     const patientModels = {};
     const roomStates = {};
     const roomPositions = config.patientPositions;
@@ -73,4 +74,42 @@ export function PatientSystem(scene, loader) {
     });
 
     updateButtonStates();
+
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    const positionObjects = Object.entries(config.patientPositions).map(([roomName, position]) => {
+        const geometry = new THREE.SphereGeometry(0.5, 16, 16);
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const ball = new THREE.Mesh(geometry, material);
+
+        ball.position.set(position.x, position.y, position.z);
+        ball.name = roomName;
+        scene.add(ball);
+
+        return ball;
+    });
+
+    function onMouseClick(event) {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        // Raycasting
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(positionObjects);
+
+        if (intersects.length > 0) {
+            const selectedObject = intersects[0].object;
+            const roomName = selectedObject.name;
+            const roomCenter = config.patientPositions[roomName];
+
+            camera.position.set(roomCenter.x, camera.position.y, roomCenter.z + 10);
+            controls.target.set(roomCenter.x, 0, roomCenter.z);
+            controls.update();
+
+            console.log(`Selected Room: ${roomName}`);
+        }
+    }
+
+    window.addEventListener('click', onMouseClick);
 }

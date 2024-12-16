@@ -41,7 +41,7 @@ function main() {
     Reception(scene, loader);
     RestRoom(scene, loader);
     SurgicalRoom(scene, loader);
-    PatientSystem(scene, loader);
+    PatientSystem(scene, loader, camera, controls);
 
     // Axes helper
     if (config.showAxes) {
