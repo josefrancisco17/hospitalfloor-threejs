@@ -87,23 +87,27 @@ export function PatientSystem(scene, loader, camera, controls) {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    const positionObjects = Object.entries(config.patientPositions).map(([roomName, position]) => {
-        const geometry = new THREE.SphereGeometry(0.5, 16, 16);
-        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const ball = new THREE.Mesh(geometry, material);
-
-        ball.position.set(position.x, position.y, position.z);
-        ball.name = roomName;
-        scene.add(ball);
-
-        return ball;
-    });
+    const positionObjects = config.showClickableZone
+        ? Object.entries(config.patientPositions).map(([roomName, position]) => {
+            const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
+            const tableWidth = 6.7;
+            const tableHeight = 2;
+            const tableDepth = 1.6;
+            const geometry = new THREE.BoxGeometry(tableWidth, tableHeight, tableDepth);
+            const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.5 });
+            const table = new THREE.Mesh(geometry, material);
+            const xOffset = roomNumber % 2 === 0 ? 1.7 : -1.7;
+            table.position.set(position.x + xOffset, position.y - tableHeight / 2, position.z);
+            table.name = roomName;
+            scene.add(table);
+            return table;
+        })
+        : [];
 
     function onMouseClick(event) {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        // Raycasting
         raycaster.setFromCamera(mouse, camera);
         const intersects = raycaster.intersectObjects(positionObjects);
 
@@ -112,42 +116,29 @@ export function PatientSystem(scene, loader, camera, controls) {
             const roomName = selectedObject.name;
             const roomCenter = config.patientPositions[roomName];
 
-            // Extract the room number from the name
             const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
 
-            // Fixed camera parameters
-            const sideOffset = 5; // Horizontal offset to position the camera to the side
-            const fixedHeight = 30; // Fixed height for the camera
-            const zoomDistance = 3; // How close the camera is to the room
+            const sideOffset = 5;
+            const fixedHeight = 30;
 
-            // Adjust camera position based on even or odd room number
             if (roomNumber % 2 === 0) {
-                // For even rooms, position the camera on the opposite side
                 camera.position.set(roomCenter.x - sideOffset, fixedHeight, roomCenter.z);
             } else {
-                // For odd rooms, position the camera on the left side
                 camera.position.set(roomCenter.x + sideOffset, fixedHeight, roomCenter.z);
             }
 
-            // Make the camera look at the center of the room with a fixed inclination
-            const lookAtHeight = 1.5; // Adjust this to control the inclination angle
+            const lookAtHeight = 1.5;
             camera.lookAt(roomCenter.x, lookAtHeight, roomCenter.z);
 
-            // Update camera controls
             controls.target.set(roomCenter.x, 0, roomCenter.z);
             controls.update();
 
-            // Save selected room and update overlay
             selectedRoom = roomName;
             updateOverlay(roomName);
 
             console.log(`Selected Room: ${roomName}`);
         }
     }
-
-
-
-
 
     function updateOverlay(roomName) {
         const overlayInfo = document.getElementById('room-info');
