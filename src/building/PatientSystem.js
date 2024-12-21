@@ -10,6 +10,10 @@ export function PatientSystem(scene, loader, camera, controls) {
     const pane = new Pane({ title: 'Patient Room Controls' });
     const folder = pane.addFolder({ title: 'See Available Rooms' });
 
+    let selectedRoom = null;
+    let isOverlayVisible = false;
+
+
     // Initialize room states
     Object.keys(roomPositions).forEach(room => {
         roomStates[room] = false;
@@ -46,6 +50,11 @@ export function PatientSystem(scene, loader, camera, controls) {
             roomStates[roomName] = true;
         }
         updateButtonStates();
+
+        if (selectedRoom === roomName) {
+            updateOverlay(roomName);
+        }
+
         return roomStates[roomName];
     }
 
@@ -107,9 +116,38 @@ export function PatientSystem(scene, loader, camera, controls) {
             controls.target.set(roomCenter.x, 0, roomCenter.z);
             controls.update();
 
+            selectedRoom = roomName;
+            updateOverlay(roomName);
+
             console.log(`Selected Room: ${roomName}`);
         }
     }
 
+    function updateOverlay(roomName) {
+        const overlayInfo = document.getElementById('room-info');
+        if (!overlayInfo) return;
+
+        const isOccupied = roomStates[roomName] || false;
+        overlayInfo.innerHTML = `
+      <p><strong>Room Name:</strong> ${roomName}</p>
+      <p><strong>Status:</strong> ${isOccupied ? 'Occupied' : 'Available'}</p>
+    `;
+    }
+
     window.addEventListener('click', onMouseClick);
+
+    window.addEventListener('keydown', (event) => {
+        if (event.key.toLowerCase() === 'i') {
+            if (!selectedRoom) {
+                console.warn('Nenhum quarto selecionado.');
+                return;
+            }
+            isOverlayVisible = !isOverlayVisible;
+            const overlay = document.getElementById('room-overlay');
+            if (overlay) {
+                overlay.style.display = isOverlayVisible ? 'block' : 'none';
+            }
+        }
+    });
+
 }

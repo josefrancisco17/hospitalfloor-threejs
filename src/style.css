@@ -68,3 +68,32 @@ canvas.threejs {
         transform: rotate(360deg);
     }
 }
+
+#room-overlay {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    padding: 12px;
+    background-color: rgba(0,0,0,0.75);
+    color: #fff;
+    display: none;
+    z-index: 9999;
+    border-radius: 8px;
+    font-family: "Ubuntu", sans-serif;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+#room-overlay h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
+
+#room-overlay p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
