@@ -112,16 +112,42 @@ export function PatientSystem(scene, loader, camera, controls) {
             const roomName = selectedObject.name;
             const roomCenter = config.patientPositions[roomName];
 
-            camera.position.set(roomCenter.x, camera.position.y, roomCenter.z + 10);
+            // Extract the room number from the name
+            const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
+
+            // Fixed camera parameters
+            const sideOffset = 5; // Horizontal offset to position the camera to the side
+            const fixedHeight = 30; // Fixed height for the camera
+            const zoomDistance = 3; // How close the camera is to the room
+
+            // Adjust camera position based on even or odd room number
+            if (roomNumber % 2 === 0) {
+                // For even rooms, position the camera on the opposite side
+                camera.position.set(roomCenter.x - sideOffset, fixedHeight, roomCenter.z);
+            } else {
+                // For odd rooms, position the camera on the left side
+                camera.position.set(roomCenter.x + sideOffset, fixedHeight, roomCenter.z);
+            }
+
+            // Make the camera look at the center of the room with a fixed inclination
+            const lookAtHeight = 1.5; // Adjust this to control the inclination angle
+            camera.lookAt(roomCenter.x, lookAtHeight, roomCenter.z);
+
+            // Update camera controls
             controls.target.set(roomCenter.x, 0, roomCenter.z);
             controls.update();
 
+            // Save selected room and update overlay
             selectedRoom = roomName;
             updateOverlay(roomName);
 
             console.log(`Selected Room: ${roomName}`);
         }
     }
+
+
+
+
 
     function updateOverlay(roomName) {
         const overlayInfo = document.getElementById('room-info');
