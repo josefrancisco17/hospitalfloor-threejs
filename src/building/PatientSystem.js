@@ -13,6 +13,24 @@ export function PatientSystem(scene, loader, camera, controls) {
     let selectedRoom = null;
     let isOverlayVisible = false;
 
+    const initialNames = ["João Silva", "Carlos Mendes", "Miguel Santos", "André Almeida", "Pedro Ferreira", "Rui Oliveira", "Tiago Costa", "Nuno Martins", "Ricardo Lopes", "Francisco Cardoso"];
+    const initialAges = [25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
+    const initialHistories = ["Diabetes", "Hipertensão arterial", "Asma", "Nenhum antecedente médico", "Doença cardíaca", "Obesidade", "Histórico de AVC", "Insuficiência renal", "Hepatite", "Sem histórico relevante"];
+    const initialSurgeries = ["Remoção do apêndice", "Reconstrução óssea", "Cirurgia cardíaca", "Correção de hérnia", "Remoção da vesícula biliar", "Cirurgia de remoção de cálculos renais", "Prótese do joelho", "Remoção de tumor", "Laparoscopia", "Correção de fratura exposta"];
+
+    let availableNames = [...initialNames];
+    let availableAges = [...initialAges];
+    let availableHistories = [...initialHistories];
+    let availableSurgeries = [...initialSurgeries];
+
+    const roomData = {
+        room1: null,
+        room2: null,
+        room3: null,
+        room4: null
+    };
+
+
 
     // Initialize room states
     Object.keys(roomPositions).forEach(room => {
@@ -38,17 +56,66 @@ export function PatientSystem(scene, loader, camera, controls) {
         });
     }
 
+    function assignPatientToRoom(roomName) {
+        if (roomData[roomName]) {
+            console.warn(`Room ${roomName} is already occupied!`);
+            return;
+        }
+
+        if (availableNames.length === 0 || availableAges.length === 0 || availableHistories.length === 0 || availableSurgeries.length === 0) {
+            console.error("No available data to assign to the room.");
+            return;
+        }
+
+        const nameIndex = Math.floor(Math.random() * availableNames.length);
+        const ageIndex = Math.floor(Math.random() * availableAges.length);
+        const historyIndex = Math.floor(Math.random() * availableHistories.length);
+        const surgeryIndex = Math.floor(Math.random() * availableSurgeries.length);
+
+        const assignedData = {
+            name: availableNames.splice(nameIndex, 1)[0],
+            age: availableAges.splice(ageIndex, 1)[0],
+            history: availableHistories.splice(historyIndex, 1)[0],
+            procedure: availableSurgeries.splice(surgeryIndex, 1)[0]
+        };
+
+        roomData[roomName] = assignedData;
+        console.log(`Assigned to ${roomName}:`, assignedData);
+    }
+
+    function releaseRoom(roomName) {
+        const patient = roomData[roomName];
+        if (!patient) {
+            console.warn(`Room ${roomName} is already available.`);
+            return;
+        }
+
+        availableNames.push(patient.name);
+        availableAges.push(patient.age);
+        availableHistories.push(patient.history);
+        availableSurgeries.push(patient.procedure);
+
+        roomData[roomName] = null;
+        console.log(`Room ${roomName} is now available.`);
+    }
+
+
     async function togglePatientInRoom(roomName) {
         if (roomStates[roomName]) {
             if (patientModels[roomName]) {
                 scene.remove(patientModels[roomName]);
                 delete patientModels[roomName];
-                roomStates[roomName] = false;
             }
+
+            releaseRoom(roomName);
+            roomStates[roomName] = false;
         } else {
             await loadPatientModel(roomName);
+
+            assignPatientToRoom(roomName);
             roomStates[roomName] = true;
         }
+
         updateButtonStates();
 
         if (selectedRoom === roomName) {
@@ -57,6 +124,7 @@ export function PatientSystem(scene, loader, camera, controls) {
 
         return roomStates[roomName];
     }
+
 
     function updateButtonStates() {
         Object.entries(roomStates).forEach(([roomName, isOccupied]) => {
@@ -148,18 +216,28 @@ export function PatientSystem(scene, loader, camera, controls) {
         if (!overlayInfo) return;
 
         const isOccupied = roomStates[roomName] || false;
+
+        const room = roomData[roomName];
+
         overlayInfo.innerHTML = `
-      <p><strong>Room Name:</strong> ${roomName}</p>
-      <p><strong>Status:</strong> ${isOccupied ? 'Occupied' : 'Available'}</p>
+        <p><strong>Room Name:</strong> ${roomName}</p>
+        <p><strong>Status:</strong> ${isOccupied ? 'Occupied' : 'Available'}</p>
+        ${isOccupied && room ? `
+            <p><strong>Patient Name:</strong> ${room.name}</p>
+            <p><strong>Age:</strong> ${room.age}</p>
+            <p><strong>Medical History:</strong> ${room.history}</p>
+            <p><strong>Procedure:</strong> ${room.procedure}</p>
+        ` : ''}
     `;
     }
+
 
     window.addEventListener('click', onMouseClick);
 
     window.addEventListener('keydown', (event) => {
         if (event.key.toLowerCase() === 'i') {
             if (!selectedRoom) {
-                console.warn('Nenhum quarto selecionado.');
+                console.warn('Nenhuma sala selecionada.');
                 return;
             }
             isOverlayVisible = !isOverlayVisible;
