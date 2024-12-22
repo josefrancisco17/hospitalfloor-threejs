@@ -87,22 +87,25 @@ export function PatientSystem(scene, loader, camera, controls) {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    const positionObjects = config.showClickableZone
-        ? Object.entries(config.patientPositions).map(([roomName, position]) => {
-            const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
-            const tableWidth = 6.7;
-            const tableHeight = 2;
-            const tableDepth = 1.6;
-            const geometry = new THREE.BoxGeometry(tableWidth, tableHeight, tableDepth);
-            const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.5 });
-            const table = new THREE.Mesh(geometry, material);
-            const xOffset = roomNumber % 2 === 0 ? 1.7 : -1.7;
-            table.position.set(position.x + xOffset, position.y - tableHeight / 2, position.z);
-            table.name = roomName;
-            scene.add(table);
-            return table;
-        })
-        : [];
+    const positionObjects = Object.entries(config.patientPositions).map(([roomName, position]) => {
+        const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
+        const tableWidth = 6.7;
+        const tableHeight = 2;
+        const tableDepth = 1.6;
+        const geometry = new THREE.BoxGeometry(tableWidth, tableHeight, tableDepth);
+
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xff0000,
+            transparent: true,
+            opacity: config.showClickableZone ? 0.5 : 0,
+        });
+        const table = new THREE.Mesh(geometry, material);
+        const xOffset = roomNumber % 2 === 0 ? 1.7 : -1.7;
+        table.position.set(position.x + xOffset, position.y - tableHeight / 2, position.z);
+        table.name = roomName;
+        scene.add(table);
+        return table;
+    });
 
     function onMouseClick(event) {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
