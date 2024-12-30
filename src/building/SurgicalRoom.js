@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 export function SurgicalRoom(scene, loader) {
 
-    const directionalLightS1 = new THREE.PointLight( 0xff0000, 50, 10 );
+   /* const directionalLightS1 = new THREE.PointLight( 0xff0000, 50, 10 );
     directionalLightS1.position.set(-18, 4, -6);
     directionalLightS1.color.setHSL( 0.1, 1, 0.95 );
     const directionalLightS2 = new THREE.PointLight( 0xff0000, 50, 10 );
@@ -18,7 +18,7 @@ export function SurgicalRoom(scene, loader) {
     scene.add(directionalLightS1);
     scene.add(directionalLightS2);
     scene.add(directionalLightS3);
-    scene.add(directionalLightS4);
+    scene.add(directionalLightS4); */
 
     loader.load('models/surgicalRoom/cabinet.glb', function(gltf) {
         const cabinet = gltf.scene;

@@ -1,6 +1,8 @@
+// Import necessary modules
 import { Pane } from "tweakpane";
 import config from "../config.json";
 import * as THREE from "three";
+import {TubePainter as spotlightHelper} from "three/addons";
 
 export function PatientSystem(scene, loader, camera, controls) {
     const patientModels = {};
@@ -30,7 +32,43 @@ export function PatientSystem(scene, loader, camera, controls) {
         room4: null
     };
 
+    // Spotlight setup
+    const spotlight = new THREE.SpotLight(0xffffff, 2000);
+    spotlight.castShadow = true;
+    spotlight.angle = THREE.MathUtils.degToRad(15); // Define the outer cone
+    spotlight.penumbra = 0.3; // Inner cone as a percentage of the outer cone
+    spotlight.decay = 2;
+    spotlight.distance = 50; // Limit the spotlight's reach
+    scene.add(spotlight);
 
+    // Spotlight target
+    const spotlightTarget = new THREE.Object3D();
+    scene.add(spotlightTarget);
+    spotlight.target = spotlightTarget;
+
+    function updateSpotlight() {
+        if (selectedRoom) {
+            const roomCenter = config.patientPositions[selectedRoom];
+            const cameraDirection = new THREE.Vector3();
+            camera.getWorldDirection(cameraDirection);
+
+            // Position spotlight slightly behind and above camera
+            const spotlightOffset = new THREE.Vector3(0, 2, 0);
+            spotlight.position.copy(camera.position).add(spotlightOffset);
+
+            // Target the surgical table
+            spotlightTarget.position.set(roomCenter.x, 0.5, roomCenter.z);
+
+            spotlight.visible = true;
+           // spotlightHelper.update();
+        } else {
+            spotlight.visible = false;
+        }
+    }
+
+    // Optional: Add a SpotLightHelper for debugging
+    //const spotlightHelper = new THREE.SpotLightHelper(spotlight);
+    //scene.add(spotlightHelper);
 
     // Initialize room states
     Object.keys(roomPositions).forEach(room => {
@@ -99,7 +137,6 @@ export function PatientSystem(scene, loader, camera, controls) {
         console.log(`Room ${roomName} is now available.`);
     }
 
-
     async function togglePatientInRoom(roomName) {
         if (roomStates[roomName]) {
             if (patientModels[roomName]) {
@@ -124,7 +161,6 @@ export function PatientSystem(scene, loader, camera, controls) {
 
         return roomStates[roomName];
     }
-
 
     function updateButtonStates() {
         Object.entries(roomStates).forEach(([roomName, isOccupied]) => {
@@ -190,7 +226,7 @@ export function PatientSystem(scene, loader, camera, controls) {
             const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
 
             const sideOffset = 5;
-            const fixedHeight = 30;
+            const fixedHeight = 30; // mudei a height vejam se tem problemas
 
             if (roomNumber % 2 === 0) {
                 camera.position.set(roomCenter.x - sideOffset, fixedHeight, roomCenter.z);
@@ -203,6 +239,13 @@ export function PatientSystem(scene, loader, camera, controls) {
 
             controls.target.set(roomCenter.x, 0, roomCenter.z);
             controls.update();
+            updateSpotlight();
+
+            // Update spotlight position and target
+            spotlight.position.set(roomCenter.x, fixedHeight + 5, roomCenter.z); // Position above the room
+            spotlightTarget.position.set(roomCenter.x, 0.5, roomCenter.z);
+
+            //spotlightHelper.update();
 
             selectedRoom = roomName;
             updateOverlay(roomName);
@@ -210,6 +253,8 @@ export function PatientSystem(scene, loader, camera, controls) {
             console.log(`Selected Room: ${roomName}`);
         }
     }
+
+    controls.addEventListener('change', updateSpotlight);
 
     function updateOverlay(roomName) {
         const overlayInfo = document.getElementById('room-info');
@@ -231,7 +276,6 @@ export function PatientSystem(scene, loader, camera, controls) {
     `;
     }
 
-
     window.addEventListener('click', onMouseClick);
 
     window.addEventListener('keydown', (event) => {
@@ -247,5 +291,4 @@ export function PatientSystem(scene, loader, camera, controls) {
             }
         }
     });
-
 }
