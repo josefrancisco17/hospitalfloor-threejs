@@ -38,8 +38,8 @@ function main() {
     // Add scene components
     Building(scene, loader);
     Corridor(scene, loader);
-    //Reception(scene, loader);
-    //RestRoom(scene, loader);
+    Reception(scene, loader);
+    RestRoom(scene, loader);
     SurgicalRoom(scene, loader);
     PatientSystem(scene, loader, camera, controls);
 

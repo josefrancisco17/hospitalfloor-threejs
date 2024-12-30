@@ -32,16 +32,14 @@ export function PatientSystem(scene, loader, camera, controls) {
         room4: null
     };
 
-    // Spotlight setup
-    const spotlight = new THREE.SpotLight(0xffffff, 2000);
+    const spotlight = new THREE.SpotLight(0xffffff, 150);
     spotlight.castShadow = true;
-    spotlight.angle = THREE.MathUtils.degToRad(15); // Define the outer cone
-    spotlight.penumbra = 0.3; // Inner cone as a percentage of the outer cone
-    spotlight.decay = 2;
-    spotlight.distance = 50; // Limit the spotlight's reach
+    spotlight.angle = THREE.MathUtils.degToRad(10);
+    spotlight.penumbra = 0.3;
+    spotlight.decay = 1;
+    spotlight.distance = 100;
     scene.add(spotlight);
 
-    // Spotlight target
     const spotlightTarget = new THREE.Object3D();
     scene.add(spotlightTarget);
     spotlight.target = spotlightTarget;
@@ -52,25 +50,19 @@ export function PatientSystem(scene, loader, camera, controls) {
             const cameraDirection = new THREE.Vector3();
             camera.getWorldDirection(cameraDirection);
 
-            // Position spotlight slightly behind and above camera
+
             const spotlightOffset = new THREE.Vector3(0, 2, 0);
             spotlight.position.copy(camera.position).add(spotlightOffset);
 
-            // Target the surgical table
             spotlightTarget.position.set(roomCenter.x, 0.5, roomCenter.z);
 
             spotlight.visible = true;
-           // spotlightHelper.update();
+
         } else {
             spotlight.visible = false;
         }
     }
 
-    // Optional: Add a SpotLightHelper for debugging
-    //const spotlightHelper = new THREE.SpotLightHelper(spotlight);
-    //scene.add(spotlightHelper);
-
-    // Initialize room states
     Object.keys(roomPositions).forEach(room => {
         roomStates[room] = false;
     });
@@ -172,7 +164,6 @@ export function PatientSystem(scene, loader, camera, controls) {
         });
     }
 
-    // Setup controls
     Object.keys(roomPositions).forEach(roomName => {
         const btn = folder.addButton({
             title: `${roomName} (Empty)`,
@@ -226,7 +217,7 @@ export function PatientSystem(scene, loader, camera, controls) {
             const roomNumber = parseInt(roomName.replace(/[^0-9]/g, ""), 10);
 
             const sideOffset = 5;
-            const fixedHeight = 30; // mudei a height vejam se tem problemas
+            const fixedHeight = 30;
 
             if (roomNumber % 2 === 0) {
                 camera.position.set(roomCenter.x - sideOffset, fixedHeight, roomCenter.z);
@@ -239,13 +230,10 @@ export function PatientSystem(scene, loader, camera, controls) {
 
             controls.target.set(roomCenter.x, 0, roomCenter.z);
             controls.update();
-            updateSpotlight();
+            //updateSpotlight();
 
-            // Update spotlight position and target
             spotlight.position.set(roomCenter.x, fixedHeight + 5, roomCenter.z); // Position above the room
             spotlightTarget.position.set(roomCenter.x, 0.5, roomCenter.z);
-
-            //spotlightHelper.update();
 
             selectedRoom = roomName;
             updateOverlay(roomName);
@@ -254,7 +242,7 @@ export function PatientSystem(scene, loader, camera, controls) {
         }
     }
 
-    controls.addEventListener('change', updateSpotlight);
+    //controls.addEventListener('change', updateSpotlight);
 
     function updateOverlay(roomName) {
         const overlayInfo = document.getElementById('room-info');
