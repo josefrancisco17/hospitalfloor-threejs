@@ -1,8 +1,6 @@
-// Import necessary modules
 import { Pane } from "tweakpane";
 import config from "../config.json";
 import * as THREE from "three";
-import {TubePainter as spotlightHelper} from "three/addons";
 
 export function PatientSystem(scene, loader, camera, controls) {
     const patientModels = {};
@@ -15,10 +13,10 @@ export function PatientSystem(scene, loader, camera, controls) {
     let selectedRoom = null;
     let isOverlayVisible = false;
 
-    const initialNames = ["João Silva", "Carlos Mendes", "Miguel Santos", "André Almeida", "Pedro Ferreira", "Rui Oliveira", "Tiago Costa", "Nuno Martins", "Ricardo Lopes", "Francisco Cardoso"];
+    const initialNames = ["John Silva", "Charles Mendes", "Michael Santos", "Andrew Almeida", "Peter Ferreira", "Ray Oliver", "James Costa", "Nathan Martin", "Richard Lopez", "Francis Cardoso"];
     const initialAges = [25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
-    const initialHistories = ["Diabetes", "Hipertensão arterial", "Asma", "Nenhum antecedente médico", "Doença cardíaca", "Obesidade", "Histórico de AVC", "Insuficiência renal", "Hepatite", "Sem histórico relevante"];
-    const initialSurgeries = ["Remoção do apêndice", "Reconstrução óssea", "Cirurgia cardíaca", "Correção de hérnia", "Remoção da vesícula biliar", "Cirurgia de remoção de cálculos renais", "Prótese do joelho", "Remoção de tumor", "Laparoscopia", "Correção de fratura exposta"];
+    const initialHistories = ["Diabetes", "High blood pressure", "Asthma", "No medical history", "Heart disease", "Obesity", "Stroke history", "Kidney failure", "Hepatitis", "No relevant history"];
+    const initialSurgeries = ["Appendix removal", "Bone reconstruction", "Heart surgery", "Hernia repair", "Gallbladder removal", "Kidney stone removal surgery", "Knee prosthesis", "Tumor removal", "Laparoscopy", "Open fracture repair"];
 
     let availableNames = [...initialNames];
     let availableAges = [...initialAges];
@@ -43,25 +41,6 @@ export function PatientSystem(scene, loader, camera, controls) {
     const spotlightTarget = new THREE.Object3D();
     scene.add(spotlightTarget);
     spotlight.target = spotlightTarget;
-
-    function updateSpotlight() {
-        if (selectedRoom) {
-            const roomCenter = config.patientPositions[selectedRoom];
-            const cameraDirection = new THREE.Vector3();
-            camera.getWorldDirection(cameraDirection);
-
-
-            const spotlightOffset = new THREE.Vector3(0, 2, 0);
-            spotlight.position.copy(camera.position).add(spotlightOffset);
-
-            spotlightTarget.position.set(roomCenter.x, 0.5, roomCenter.z);
-
-            spotlight.visible = true;
-
-        } else {
-            spotlight.visible = false;
-        }
-    }
 
     Object.keys(roomPositions).forEach(room => {
         roomStates[room] = false;
@@ -230,7 +209,6 @@ export function PatientSystem(scene, loader, camera, controls) {
 
             controls.target.set(roomCenter.x, 0, roomCenter.z);
             controls.update();
-            //updateSpotlight();
 
             spotlight.position.set(roomCenter.x, fixedHeight + 5, roomCenter.z); // Position above the room
             spotlightTarget.position.set(roomCenter.x, 0.5, roomCenter.z);
@@ -241,8 +219,6 @@ export function PatientSystem(scene, loader, camera, controls) {
             console.log(`Selected Room: ${roomName}`);
         }
     }
-
-    //controls.addEventListener('change', updateSpotlight);
 
     function updateOverlay(roomName) {
         const overlayInfo = document.getElementById('room-info');
@@ -269,7 +245,7 @@ export function PatientSystem(scene, loader, camera, controls) {
     window.addEventListener('keydown', (event) => {
         if (event.key.toLowerCase() === 'i') {
             if (!selectedRoom) {
-                console.warn('Nenhuma sala selecionada.');
+                console.warn('No room selected.');
                 return;
             }
             isOverlayVisible = !isOverlayVisible;
