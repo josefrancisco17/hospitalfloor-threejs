@@ -18,7 +18,6 @@ export function Loading() {
         progressText.textContent = `${Math.round(progress)}%`;
     };
 
-    // Hide the loading screen and show stats after loading is complete
     loadingManager.onLoad = () => {
         setTimeout(() => {
             loadingScreen.classList.add("hidden");

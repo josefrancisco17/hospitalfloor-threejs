@@ -11,5 +11,6 @@
     "pixelRatio": 1.5,
     "powerPreference": "high-performance"
   },
-  "showAxes": false
+  "showAxes": false,
+  "showClickableZone": false
 }
